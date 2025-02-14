@@ -1,0 +1,23 @@
+<div style="padding: 15px;">  
+    <h2> Pipe </h2>
+    {{name | lowercase }}
+    {{name | uppercase }}
+    <p> {{company_profile.company_name}} </p>
+    <p> {{company_profile.company_address}} </p>
+    <h2> JSON pipe </h2>
+    <table>
+        <tr>
+            <td> ID </td>
+            <td> Name </td>
+            <td> Country </td>
+        </tr>
+        @for(emp of employees;track emp.id) {
+        <tr>
+            <td> {{emp.id}} </td>
+            <td> {{emp.name | uppercase }} </td>
+            <td> {{emp.country | lowercase}} </td>
+        </tr>
+    }
+    </table>
+    <!-- <div @for(emp of emplies; track)> {{company_details.company_owners}} </div> -->
+    </div>
