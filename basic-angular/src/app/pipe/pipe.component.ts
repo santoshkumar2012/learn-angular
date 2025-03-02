@@ -1,15 +1,15 @@
-import { LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { CommonModule, LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-pipe',
-  imports: [LowerCasePipe, UpperCasePipe],
+  imports: [LowerCasePipe, UpperCasePipe, CommonModule],
   templateUrl: './pipe.component.html',
   styleUrl: './pipe.component.css'
 })
 export class PipeComponent {
 
-  name = "Santosh Kumar"
+   name = "Santosh Kumar"
   company_profile = {
     company_name: "P & N Brothers",
     company_length: 50-2000,
@@ -24,5 +24,6 @@ export class PipeComponent {
     { id:5, name:"Nityansh", country:"Delhi", },
     { id:6, name:"Sushila Deve", country:"Delhi", },
   ]
+  age = 42
 
 }
