@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between"> 
+          <h3 class="p-0 m-0"> Letter </h3>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_letters"> <i class='bx bx-plus'></i> New Custom Letter </button>
+        </div>
+        <div class="table-responsive"> 
+            <table class="table table-striped mt-2">
+            <thead>
+              <tr>
+                <th scope="col"> Id </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Recipient </th>
+                <th scope="col"> Item Type </th>
+                <th scope="col"> Bulk </th>
+                <th scope="col" class="text-center"> Action </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let letter of letters">
+                <th scope="row"> {{letter.id}} </th>
+                <td> {{letter.name}} </td>
+                <td>{{letter.recipient}}</td>
+                <td>{{letter.item_type}}</td>
+                <td>{{letter.bulk}}</td>
+                <td><a href="#"> <i class='bx bx-cloud-download'></i> </a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+    </div>
+</div>
