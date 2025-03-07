@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class PipeComponent {
 
-   name = "Santosh Kumar"
+  name = "Santosh Kumar"
   company_profile = {
     company_name: "P & N Brothers",
     company_length: 50-2000,

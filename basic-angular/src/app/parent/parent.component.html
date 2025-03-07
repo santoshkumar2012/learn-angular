@@ -1,0 +1,9 @@
+<div class="p-5"> 
+<h1> Parent </h1>
+<hr class="mt-5 pb-5">
+<!-- <app-child [receivedData]="parentMessage"></app-child> -->
+
+<app-child (messageEvent)="receiveMessage($event)"></app-child>
+<p>Message from Child: {{ receivedMessage }}</p>
+
+</div>
