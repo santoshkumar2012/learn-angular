@@ -1,0 +1,31 @@
+<div class="max-w-lg mx-auto md:max-w-5xl">
+<h1 class="uppercase tracking-wide text-3xl font-semibold mb-5"> NgIf </h1>
+
+<!-- <h2 class="uppercase tracking-wide text-xl font-semibold mb-5" *ngIf="isVisiable">
+    Welcome to NgIf
+  </h2> -->
+
+  <!-- <div *ngIf="isLoggedIn"> 
+    <h1 class="uppercase tracking-wide text-3xl font-semibold mb-5"> Welocme User  </h1>
+    <button class="border-t-neutral-50"> Logged Out </button>
+  </div>
+
+  <div *ngIf="!isLoggedIn"> 
+    Please Login <br>
+    <button class="border-t-neutral-50"> Login </button>
+  </div> -->
+
+  <div *ngIf="empData">
+    <p><strong>First Name:</strong> {{ empData.name }}</p>
+    <p><strong>Last Name:</strong> {{ empData.last_name }}</p>
+    <p><strong>Age:</strong> {{ empData.age }}</p>
+    <p><strong>Department:</strong> {{ empData.department }}</p>
+  </div>
+  
+  <div *ngIf="!empData">
+    No Employe Data
+  </div>
+
+
+  
+</div>
