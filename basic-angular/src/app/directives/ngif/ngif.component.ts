@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 })
 export class NgifComponent implements OnInit {
 
-// isVisiable:boolean = false
+isVisiable:boolean = false
 
-// isLoggedIn:boolean = true
+isLoggedIn:boolean = true
 
 // empData = {
 //   name: "Santosh",
@@ -23,16 +23,19 @@ export class NgifComponent implements OnInit {
 
 empData:any;
 
-ngOnInit(): void {
-  setTimeout(() => {
-      this.empData = {
-      name: "Santosh",
-      last_name: "Kumar",
-      age: 30,
-      department: 'Development'
-    };
-  }, 4000
-)
-}
+ ngOnInit(): void {
+
+setTimeout(() => {
+
+ this.empData = {
+  name: "Santosh",
+    last_name: "Kumar",
+    age: 30,
+    department: 'Development'
+ }
+
+  }, 5000);
+
+ }
 
 }

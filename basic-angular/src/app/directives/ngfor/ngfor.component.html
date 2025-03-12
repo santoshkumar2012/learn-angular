@@ -1,3 +1,19 @@
 <div class="max-w-lg mx-auto md:max-w-5xl">
-sdfdf
+    <h1 class="uppercase tracking-wide text-3xl font-semibold mb-5"> Ng For </h1>
+    <table>
+    <tr> 
+        <td> ID </td>
+        <td> Name </td>
+        <td> Age </td>
+        <td> Department </td>
+        <td> Salary </td>
+    </tr>
+    <tr *ngFor="let employee of employees"> 
+        <td> {{employee.id}} </td>
+        <td> {{employee.name}} </td>
+        <td> {{employee.age}} </td>
+        <td> {{employee.department}} </td>
+        <td> {{employee.salary}} </td>
+    </tr>
+    </table>
 </div>

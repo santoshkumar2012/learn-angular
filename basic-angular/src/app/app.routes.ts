@@ -6,6 +6,8 @@ import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { NgifComponent } from './directives/ngif/ngif.component';
 import { NgswitchComponent } from './directives/ngswitch/ngswitch.component';
+import { NgforComponent } from './directives/ngfor/ngfor.component';
+import { DirectivesComponent } from './directives/directives.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -14,6 +16,7 @@ export const routes: Routes = [
     {path: 'parent', component: ParentComponent},
     {path: 'child', component: ChildComponent},
     {path: 'ngif', component: NgifComponent},
-    {path: 'ngfor', component: NgifComponent},
-    {path: 'ngswithch', component: NgswitchComponent}
+    {path: 'ngfor', component: NgforComponent},
+    {path: 'ngswithch', component: NgswitchComponent},
+    {path: 'directive', component: DirectivesComponent}
 ];

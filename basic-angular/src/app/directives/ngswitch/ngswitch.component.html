@@ -1,1 +1,46 @@
-<p>ngswitch works!</p>
+<div class="max-w-lg mx-auto md:max-w-5xl">
+    <h1 class="uppercase tracking-wide text-3xl font-semibold mb-5"> NgSwitch </h1>
+
+
+<!-- <select name="" id="" [(ngModel)]="step">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select> -->
+
+    <div [ngSwitch]="step"> 
+    
+    <div class="mb-10" *ngSwitchCase="1"> 
+        <h4 class="font-bold text-3xl"> Step 1 </h4>
+        <p> How to works Step 1 </p>
+    </div>
+
+    <div class="mb-5" *ngSwitchCase="2"> 
+        <h4 class="font-bold text-3xl"> Step 2 </h4>
+        <p> How to works Step 2 </p>
+    </div>
+
+    <div class="mb-5" *ngSwitchCase="3"> 
+        <h4 class="font-bold text-3xl"> Step 3 </h4>
+        <p> How to works Step 2 </p>
+    </div>
+
+    <div class="mb-5" *ngSwitchCase="4"> 
+        <h4 class="font-bold text-3xl"> Step 4 </h4>
+        <p> How to works Step 4 </p>
+    </div>
+
+    <div class="mb-5" *ngSwitchCase="5"> 
+        <h4 class="font-bold text-3xl"> Step 5 </h4>
+        <p> How to works Step 5 </p>
+    </div>
+
+    <div *ngSwitchDefault>
+        All Step Done
+    </div>
+
+</div>
+
+</div>
