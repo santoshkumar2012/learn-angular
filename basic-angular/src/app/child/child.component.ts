@@ -9,10 +9,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ChildComponent {
 
   @Input() receivedData!: string;
-
   @Output() messageEvent = new EventEmitter<string>(); // Define EventEmitter
   sendMessage() {
     this.messageEvent.emit("Hello Parent! This is from Child."); // Emit data to parent
+  }
+
+  constructor(){
+    console.log("child components")
   }
   
 }

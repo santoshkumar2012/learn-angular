@@ -14,4 +14,8 @@ import { DisableCopyDirective } from './disable-copy.directive';
 })
 export class DirectivesComponent {
 
+  constructor(){
+    console.log('Check--->', "Directive");
+  }
+
 }

@@ -17,4 +17,8 @@ export class ParentComponent {
     this.receivedMessage = message; // Receive data from child
   }
 
+  constructor(){
+    console.log('Check--->', "Parent");
+  }
+
 }

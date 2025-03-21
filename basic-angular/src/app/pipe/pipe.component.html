@@ -1,26 +1,46 @@
 <div style="padding: 15px;">  
     <h2> Pipe </h2>
-    {{name | lowercase }}
+    <!-- {{name | lowercase }}
     {{name | uppercase }}
     <p> {{company_profile.company_name}} </p>
     <p> {{company_profile.company_address}} </p>
-    <p> {{age}} </p>
+    <p> {{age}} </p> -->
 
-    <h2> JSON pipe </h2>
-    <table>
-        <tr>
-            <td> ID </td>
-            <td> Name </td>
-            <td> Country </td>
+    <div class="container mx-auto px-4">
+    <h2 class="mb-5"> JSON pipe </h2>
+
+    <div class="searchBox mb-2"> 
+     <input type="text" placeholder="Search..." class="w-full p-3 pl-10 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" [(ngModel)]="nameSearch" />
+    </div>
+    <div class="overflow-x-auto mt-5">
+        <table class="table-auto w-full border border-gray-300 bg-white shadow-md">        
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2 text-left"> IDs </th>
+                    <th class="px-4 py-2 text-left"> Name </th>
+                    <th class="px-4 py-2 text-left"> Gender </th>
+                    <th class="px-4 py-2 text-left"> Country </th>
         </tr>
-        @for(emp of employees;track emp.id) {
-        <tr>
-            <td> {{emp.id}} </td>
-            <td> {{emp.name | uppercase }} </td>
-            <td> {{emp.country | lowercase}} </td>
+        </thead>
+        <tbody>
+        <tr class="border-t hover:bg-gray-100" *ngFor="let employee of employees | filter:nameSearch">
+            <td class="px-4 py-2"> {{employee.id}} </td>
+            <td class="px-4 py-2"> {{employee.name | mypipe:employee.gender }} </td>
+            <td class="px-4 py-2"> 
+                {{employee.gender}} 
+                {{ employee.name | impure:employee.gender }}
+            </td>
+            <td class="px-4 py-2"> {{employee.country | lowercase}} </td>
         </tr>
-    }
+        </tbody>
     </table>
+
+    <button (click)="addPerson()">Add Person</button>
+
+
+    </div>
+</div>
+
     <!-- <div @for(emp of emplies; track)> {{company_details.company_owners}} </div> -->
 
    

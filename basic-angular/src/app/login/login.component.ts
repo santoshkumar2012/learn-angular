@@ -15,7 +15,9 @@ loginForm!: FormGroup;
 
 constructor(
   private fb: FormBuilder,
-){}
+){
+  console.log('Check--->', "Login");
+}
 
 form_field = {
   email: ['', Validators.required],

@@ -4,7 +4,7 @@
           <h3 class="p-0 m-0"> Letter </h3>
           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_letters"> <i class='bx bx-plus'></i> New Custom Letter </button>
         </div>
-        <div class="table-responsive"> 
+        <!-- <div class="table-responsive"> 
             <table class="table table-striped mt-2">
             <thead>
               <tr>
@@ -27,7 +27,14 @@
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> -->
+
+
+        <form>
+          <select>
+            <option *ngFor="let gender of genders" value="{{gender.id}}"> {{gender.name}} </option>
+          </select>
+        </form>
         
     </div>
 </div>
