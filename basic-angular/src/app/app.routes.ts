@@ -9,6 +9,7 @@ import { NgswitchComponent } from './directives/ngswitch/ngswitch.component';
 import { NgforComponent } from './directives/ngfor/ngfor.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -20,5 +21,6 @@ export const routes: Routes = [
     {path: 'ngfor', component: NgforComponent},
     {path: 'ngswithch', component: NgswitchComponent},
     {path: 'directive', component: DirectivesComponent},
-    {path: 'rxjs', component: RxjsComponent}
+    {path: 'rxjs', component: RxjsComponent},
+    {path: 'pagination', component: PaginationComponent}
 ];

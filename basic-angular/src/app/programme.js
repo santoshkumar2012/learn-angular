@@ -1,3 +1,3 @@
 
-var a = 15;
-console.log('Check--->', a );
+// var a = 15;
+// console.log('Check--->', a );
