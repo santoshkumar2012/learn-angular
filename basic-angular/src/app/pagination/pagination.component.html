@@ -1,14 +1,211 @@
 
-<div *ngFor="let item of pagedItems">
-    {{ item }}
+<div class="container mx-auto max-w-5xl my-9">
+  <!-- Search Bar -->
+  <div class="mb-6">
+    <input type="text" placeholder="Search product..." class="w-full p-2 border border-gray-300 rounded-md">
   </div>
-  <!-- Pagination Controls -->
-  <div class="pagination">
-    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-    <button *ngFor="let page of [].constructor(totalPages); let i = index"
-            (click)="goToPage(i + 1)"
-            [class.active]="currentPage === i + 1">
-      {{ i + 1 }}
-    </button>
-    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+
+  <!-- Product List -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- Product 1 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 1" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 1</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/NAV-DN8509_1.jpg" alt="Product 2" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 2</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/NAV-DN8503_1.jpg" alt="Product 3" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/11_7b14c9e6-0977-4bdd-88b3-71ad3eaaf056.jpg" alt="Product 4"
+        class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 4</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/13_d101fdc8-4188-4453-bee3-9ef499ee4ade.jpg" alt="Product 5"
+        class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 5</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 6" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 6</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 1" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 1</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/NAV-DN8509_1.jpg" alt="Product 2" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 2</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/NAV-DN8503_1.jpg" alt="Product 3" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/11_7b14c9e6-0977-4bdd-88b3-71ad3eaaf056.jpg" alt="Product 4"
+        class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 4</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/13_d101fdc8-4188-4453-bee3-9ef499ee4ade.jpg" alt="Product 5"
+        class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 5</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 6" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 6</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 1" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 1</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/NAV-DN8509_1.jpg" alt="Product 2" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 2</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/NAV-DN8503_1.jpg" alt="Product 3" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/11_7b14c9e6-0977-4bdd-88b3-71ad3eaaf056.jpg" alt="Product 4"
+        class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 4</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/13_d101fdc8-4188-4453-bee3-9ef499ee4ade.jpg" alt="Product 5"
+        class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 5</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 6" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 6</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 6" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 6</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="https://navvi.in/cdn/shop/files/CO-ORDSETS-1019_c3d04d7f-e487-40dc-afdf-9e8a373b61f1.jpg"
+        alt="Product 6" class="w-full rounded-md mb-2">
+      <h2 class="text-lg font-semibold">Product 6</h2>
+      <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+        Shop Now
+      </button>
+    </div>
   </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center items-center mt-10 space-x-4">
+    <button class="px-4 py-2 bg-gray-300 rounded-md">Previous</button>
+    <span class="text-lg font-semibold">Page 1 of 2</span>
+    <button class="px-4 py-2 bg-gray-300 rounded-md">Next</button>
+  </div>
+</div>
