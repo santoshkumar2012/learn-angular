@@ -1,5 +1,37 @@
 
 <div class="container mx-auto max-w-5xl my-9">
+
+ <div class="grid grid-flow-col grid-rows-4 gap-4"> 
+  <div class="item h-16 bg-cyan-500" *ngFor="let item of pagedItems">
+    {{ item }}
+  </div>
+</div>
+
+  <div class="pagination flex justify-center items-center mt-10 space-x-4">
+
+    <button class="px-4 py-2 bg-blue-900 rounded-md text-white cursor-pointer" 
+    (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+
+    <button class="text-lg font-semibold cursor-pointer" *ngFor="let page of [].constructor(totalPages); let i = index"
+            (click)="goToPage(i + 1)"
+            [class.active]="currentPage === i + 1">
+      {{ i + 1 }}
+    </button>
+
+    <button class="px-4 py-2 bg-blue-900 rounded-md text-white cursor-pointer" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+
+  </div>
+
+
+  <!-- <div class="flex justify-center items-center mt-10 space-x-4">
+    <button class="px-4 py-2 bg-gray-300 rounded-md">Previous</button>
+    <span class="text-lg font-semibold">Page 1 of 2</span>
+    <button class="px-4 py-2 bg-gray-300 rounded-md">Next</button>
+  </div> -->
+
+
+<hr class="mt-10">
+
   <!-- Search Bar -->
   <div class="mb-6">
     <input type="text" placeholder="Search product..." class="w-full p-2 border border-gray-300 rounded-md">
