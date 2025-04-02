@@ -1,21 +1,29 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-child',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './child.component.html',
   styleUrl: './child.component.css'
 })
 export class ChildComponent {
 
-  @Input() receivedData!: string;
-  @Output() messageEvent = new EventEmitter<string>(); // Define EventEmitter
-  sendMessage() {
-    this.messageEvent.emit("Hello Parent! This is from Child."); // Emit data to parent
-  }
+  // @Input() receivedData!: string;
+  // @Output() messageEvent = new EventEmitter<string>(); // Define EventEmitter
+  // sendMessage() {
+  //   this.messageEvent.emit("Hello Parent! This is from Child."); // Emit data to parent
+  // }
 
-  constructor(){
-    console.log("child components")
+  @Input() item: any;
+
+  // constructor(){
+  //   console.log("child components")
+  // }
+
+  ngOnChanges(){
+    alert("Data has been updated by parent component...")
+    // console.log('Changes detected' );
   }
   
 }
