@@ -1,0 +1,33 @@
+
+<div class="max-w-xl mx-auto md:max-w-5xl mb-10">
+    
+    <h1 class="uppercase tracking-wide text-3xl font-semibold mb-5 mt-5"> Structural Directive </h1>
+    <h2 class="text-2xl mb-5"> Structural directive are responsbile for the Structural and layout of the DOM Element. </h2>
+    <p><strong> *ngIf ( Condition-based rendering. ) </strong></p>
+    <p><strong> *ngIf-else ( Condition-based rendering. ) </strong></p>
+    <p> <strong> *ngFor (  Loops over collections. )</strong></p>
+    <p> <strong> *ngSwitch ( Switch-case logic ) </strong></p>
+
+
+    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-10 h-50"> 
+    <p><strong> *ngIf Examples </strong></p>
+    <div *ngIf="isVisiable" class="mt-10"> This message for isVisiable </div>
+    <button type="button" (click)="toggleButton()" class="mt-3 text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600"> Show and Hide </button>
+    </div>
+
+    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5 h-30"> 
+    <p><strong> *ngIf-else Examples </strong></p>
+    <div class="mt-10" *ngIf="display; else elsePart"> This message for isVisiable </div>
+    <ng-template #elsePart> Santosh Kumar </ng-template>
+   </div>
+
+   <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5 h-40"> 
+    <p><strong> *ngfor Examples </strong></p>
+    <ul *ngFor="let person of persons; index as i">
+        <li> {{ i + 1 }} {{person.first_name}} </li>
+    </ul>
+   </div>
+
+
+
+</div>
