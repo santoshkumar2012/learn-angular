@@ -12,6 +12,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { LifecyclehookComponent } from './lifecyclehook/lifecyclehook.component';
 import { StructuralDirectiveComponent } from './directives/structural-directive/structural-directive.component';
+import { PromiseComponent } from './rxjs/promise/promise.component';
+import { LoaderComponent } from './loader/loader.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -26,5 +28,7 @@ export const routes: Routes = [
     {path: 'rxjs', component: RxjsComponent},
     {path: 'pagination', component: PaginationComponent},
     {path: 'lifecyclehook', component:LifecyclehookComponent},
-    {path: 'structural-directive', component:StructuralDirectiveComponent}
+    {path: 'structural-directive', component:StructuralDirectiveComponent},
+    {path: 'promise', component:PromiseComponent},
+    {path: 'loader', component:LoaderComponent}
 ];

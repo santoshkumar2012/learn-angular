@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
+import { response } from 'express';
+import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, LoaderComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -12,6 +14,7 @@ export class LoginComponent {
 
 isVisiable = false
 loginForm!: FormGroup;
+loading:boolean = false
 
 constructor(
   private fb: FormBuilder,
@@ -29,10 +32,16 @@ form_field = {
 ngOnInit(){this.loginForm = this.fb.group(this.form_field)}
 setPayload(form: any){return { email: form.email, password: form.password}}
 
-login(){}
+login(){
+  this.loading = true
+  // this.http.get('').subscribe((response:any) => {
+  // this.loading = false
+  // })
+}
 
 toggle(){
   this.isVisiable = !this.isVisiable
 }
+
 
 }
