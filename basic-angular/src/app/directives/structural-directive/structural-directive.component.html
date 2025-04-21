@@ -28,6 +28,73 @@
     </ul>
    </div>
 
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-10 h-50"> 
+<ul> 
 
+    <!-- @for (staff of staffs; track staff) {
+    @if (staff.salary < 50000) {
+        <li>{{ staff.staff_name }} (Low salary)</li>
+    } @else {
+        <li>{{ staff.staff_name }} (High salary)</li>
+    }
+} -->
+    <!-- <ul *ngIf="staffs.length > 30000; else noData">
+        <li *ngFor="let staff of staffs">
+          {{ staff.staff_name }} {{ staff.salary }}
+        </li>
+    </ul>
+         <ng-template #noData>
+            <p>No staff data available.</p>
+        </ng-template> -->
+
+
+<ul>
+    <li *ngFor="let staff of staffs"> 
+        <ng-container *ngIf="staff.salary < 50000; else highsalary">
+            {{staff.staff_name}} {{staff.salary}}
+        </ng-container>
+        <ng-template #highsalary>
+          <div style="background-color: #ececec;">   {{staff.staff_name}} {{staff.salary}} </div>
+        </ng-template>
+    </li>
+</ul>
+
+<hr>
+<hr>
+
+
+<ul>
+    <li *ngFor="let staff of staffs"> 
+        <ng-container *ngIf="staff.salary < 10000; else noData">
+            {{staff.staff_name}} {{staff.salary}}
+        </ng-container>
+        <ng-template #noData>
+            <p>No staff data available.</p>
+        </ng-template>
+    </li>
+</ul>
+
+
+
+    <!-- <br>
+    <ng-container #lowsalary>
+        {{staff.staff_name}}
+    </ng-container> 
+</li> -->
+
+<!-- <ul *ngIf="staffs.length < 50000; else noData">
+    <li *ngFor="let staff of staffs">{{ staff.staff_name }} {{ staff.salary }}</li>
+</ul>
+  
+<ng-template #noData>
+    <p>No staff data available.</p>
+</ng-template> -->
+
+<div>
+
+</div>
+
+</ul>
+</div>
 
 </div>

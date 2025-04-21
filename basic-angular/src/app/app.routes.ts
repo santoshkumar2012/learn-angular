@@ -14,6 +14,7 @@ import { LifecyclehookComponent } from './lifecyclehook/lifecyclehook.component'
 import { StructuralDirectiveComponent } from './directives/structural-directive/structural-directive.component';
 import { PromiseComponent } from './rxjs/promise/promise.component';
 import { LoaderComponent } from './loader/loader.component';
+import { BindingComponent } from './binding/binding.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -30,5 +31,6 @@ export const routes: Routes = [
     {path: 'lifecyclehook', component:LifecyclehookComponent},
     {path: 'structural-directive', component:StructuralDirectiveComponent},
     {path: 'promise', component:PromiseComponent},
-    {path: 'loader', component:LoaderComponent}
+    {path: 'loader', component:LoaderComponent},
+    {path: 'binding', component:BindingComponent}
 ];

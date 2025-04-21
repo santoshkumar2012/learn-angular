@@ -1,0 +1,56 @@
+<div class="max-w-xl mx-auto md:max-w-5xl mb-10">
+<h1 style="font-size: 2rem; font-weight: 600;"> Event Binding </h1>
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5"> 
+<button (click)="clickEvent()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> Submit </button>
+<hr>
+<div class="mt-5"> 
+<input type="text" #box (keyup)="clickEvent2(box.value)" placeholder="Event Keyup" class="border-black-200 p-2" style="border: #ccc solid 2px;"> <br> <br>
+<input type="text" placeholder="keypress" #box1 (keypress)="clickEvent2(box1.value)"  class="border-black-200 p-2" style="border: #ccc solid 2px;">
+<button (click)="clickEvents()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> Submit </button>
+</div>
+</div>
+
+<h1 style="font-size: 2rem; font-weight: 600;" class="mt-5"> Property Binding </h1>
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5"> 
+<!-- <button type="button" [disabled]="isDisabled"> Submit </button> -->
+<!-- <input type="text" style="border: #ccc solid 2px; margin-bottom: 10px;" disabled={{isDisabled}}> -->
+<input type="text" style="border: #ccc solid 2px;" [disabled]="isDisabled">
+<br>
+<br>
+<input type="text" [value]="defaultName"  style="border: #ccc solid 2px;">
+<br>
+<br>
+<img [src]="imgUrl" alt="">
+</div>
+
+<h1 style="font-size: 2rem; font-weight: 600;" class="mt-5"> Attribute Binding </h1>
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5"> 
+    <!-- <td [attr.colspan]="columnSpan">Content</td> -->
+    <input type="text" [attr.placeholder]="placeholder1" name="username" required style="border: #ccc solid 1px;">
+</div>
+
+<h1 style="font-size: 2rem; font-weight: 600;" class="mt-5"> Class Binding </h1>
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5"> 
+    <div [class.active]="isActive"> Hello </div>
+    <div [ngClass]="['class-one', true ? 'class-two' : false]"> Box </div>
+    <div [ngClass]="{'success': isSuccess, 'error': isError}"> Status </div>
+    
+</div>
+
+<h1 style="font-size: 2rem; font-weight: 600;" class="mt-5"> Style Binding </h1>
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5"> 
+    <div [style.backgroundColor]="bgColor"> Santosh </div>
+</div>
+
+
+<h1 style="font-size: 2rem; font-weight: 600;" class="mt-5"> Two way Binding </h1>
+<div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5"> 
+    <div>
+        <input [(ngModel)]="username" type="text" placeholder="Enter Name" style="border: #ccc solid 2px; padding: 5px; margin-top: 10px;">
+        <p>{{username}}</p>
+    </div>
+</div>
+
+
+
+</div>
