@@ -1,6 +1,7 @@
+import { Environment } from "./environment.model";
 export const environment = {
-    production: false,
+    production: true,
     apiurl: "https://api.memelli.com/",
     baseurl: "https://coach.memelli.com/",
-    authToken: sessionStorage.getItem('token')
+    //authToken: sessionStorage.getItem('token')
 };

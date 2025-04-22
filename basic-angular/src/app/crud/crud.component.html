@@ -1,8 +1,8 @@
 <div class="card">
     <div class="card-body">
         <div class="d-flex justify-content-between"> 
-          <h3 class="p-0 m-0"> Letter </h3>
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_letters"> <i class='bx bx-plus'></i> New Custom Letter </button>
+          <!-- <h3 class="p-0 m-0"> Letter </h3>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_letters"> <i class='bx bx-plus'></i> New Custom Letter </button> -->
         </div>
         <!-- <div class="table-responsive"> 
             <table class="table table-striped mt-2">
@@ -28,13 +28,16 @@
             </tbody>
           </table>
         </div> -->
-
-
         <!-- <form>
           <select>
             <option *ngFor="let gender of genders" value="{{gender.id}}"> {{gender.name}} </option>
           </select>
         </form> -->
+        <ul>
+          <li *ngFor="let page of pages"> 
+            {{page.title}}, {{page.email}}
+          </li>
+        </ul>
         
     </div>
 </div>

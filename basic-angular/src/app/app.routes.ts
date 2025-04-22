@@ -15,6 +15,7 @@ import { StructuralDirectiveComponent } from './directives/structural-directive/
 import { PromiseComponent } from './rxjs/promise/promise.component';
 import { LoaderComponent } from './loader/loader.component';
 import { BindingComponent } from './binding/binding.component';
+import { SubjectComponent } from './rxjs/subject/subject.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -32,5 +33,6 @@ export const routes: Routes = [
     {path: 'structural-directive', component:StructuralDirectiveComponent},
     {path: 'promise', component:PromiseComponent},
     {path: 'loader', component:LoaderComponent},
-    {path: 'binding', component:BindingComponent}
+    {path: 'binding', component:BindingComponent},
+    {path: 'subject', component:SubjectComponent}
 ];

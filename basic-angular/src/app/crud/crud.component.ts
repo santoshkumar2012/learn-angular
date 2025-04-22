@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { CommonServiceService } from '../common-service.service';
 import { CommonModule } from '@angular/common';
-import { HttpSharedService } from '../http-shared.service';
-import { response } from 'express';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-crud',
@@ -13,24 +11,19 @@ import { response } from 'express';
 })
 export class CrudComponent {
 
-  letters: any
-  genders: any
-  leads: any
+  pages: any
 
-  constructor(
-    private _common : CommonServiceService,
-    private _http : HttpSharedService
-  ){
-    this.genders = this._common.genders
-    console.log('Check--->', "crud");    
+  constructor( private http: HttpClient ){}
+
+  ngOnInit(){
+    this.getPages()
   }
 
-  ngOnInit(){}
-
-  getLeads(){
-    this._http.get('leads/leads/').subscribe((response:any) => {
-      this.leads = response
-    })
-  }
+  getPages(){
+  this.http.get('https://api.memelli.com/cms').subscribe((response: any) => {
+    this.pages = response;
+    console.log('Check--->', this.pages);
+  })
+ }
 
 }
