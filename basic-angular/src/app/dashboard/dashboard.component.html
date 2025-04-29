@@ -1,0 +1,36 @@
+<!-- <app-loader *ngIf="loading"></app-loader> -->
+<header class="bg-gray-900 shadow-md px-6 py-4 flex items-center justify-between">
+    <!-- Logo / Title -->
+    <div class="text-2xl font-bold text-white">
+      Angular Dashboard
+    </div>
+  
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex space-x-6 text-gray-100 font-medium">
+      <a routerLink="/users" class="hover:text-blue-600"> User </a>
+      <button
+      (click)="logout()"
+      class="text-sm text-red-600 font-semibold hover:underline cursor-pointer"
+    >
+      Logout
+    </button>
+    </nav>
+  
+    <!-- Mobile Menu Button (optional) -->
+    <button class="md:hidden text-gray-700 hover:text-blue-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </header>
+
+<div class="w-full"> 
+<div class="w-full p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <a *ngFor="let component of components" [routerLink]="component.link" class="bg-white shadow-md rounded-2xl p-6 hover:shadow-xl transition duration-300 flex items-center justify-center text-center text-lg font-semibold text-gray-700 hover:text-blue-600">
+        {{component.name}}
+    </a>
+</div>
+</div>
+  

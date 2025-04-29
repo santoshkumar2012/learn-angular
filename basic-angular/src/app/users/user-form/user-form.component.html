@@ -1,0 +1,40 @@
+
+<div class="card mt-10">
+<div class="card-body text-center max-w-lg m-auto rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+    <h2 class="mb-4 text-center font-large"> ADD USER </h2>
+
+    <form [formGroup]="user_form" (ngSubmit)="savForm()" class="m-auto text-center">
+
+    <input formControlName="username" placeholder="Username" class="border p-2 rounded w-100 mb-3" />
+    <div class="error-message" *ngIf="user_form.get('username')?.touched && user_form.get('username')?.hasError('required')">
+     Username is required. </div>
+
+    <input formControlName="firstName" placeholder="First Name" class="border p-2 rounded w-100 mb-3" />
+    <div class="error-message" *ngIf="user_form.get('firstName')?.touched && user_form.get('firstName')?.hasError('required')">
+        First Name is required. </div>
+
+    <input formControlName="lastName" placeholder="LastName" class="border p-2 rounded w-100 mb-3" />
+    <div class="error-message" *ngIf="user_form.get('lastName')?.touched && user_form.get('lastName')?.hasError('required')">
+        Last Name is required. </div>
+
+    <input formControlName="gender" placeholder="Gender" class="border p-2 rounded w-100 mb-3" />
+    <div class="error-message" *ngIf="user_form.get('gender')?.touched && user_form.get('gender')?.hasError('required')">
+        Gender is required. </div>
+
+    <input formControlName="email" placeholder="Email" class="border p-2 rounded w-100 mb-3" />
+    <div class="error-message" *ngIf="user_form.get('email')?.touched && user_form.get('email')?.hasError('required')">
+        Email is required. </div>
+
+    <input formControlName="phone" placeholder="Phone" class="border p-2 rounded w-100 mb-3" />
+    <div class="error-message" *ngIf="user_form.get('phone')?.touched && user_form.get('phone')?.hasError('required')">
+        Phone is required. </div>
+
+    <input formControlName="address" placeholder="Address" class="border p-2 rounded w-100 mb-3" />
+    <div class="error-message" *ngIf="user_form.get('address')?.touched && user_form.get('address')?.hasError('required')">
+        Address is required. </div>
+
+    <button type="submit" class="border p-2 rounded w-100 mb-3 curson-pointer bg-slate-800 text-white"> Submit </button>
+</form>
+
+  </div>
+  </div>

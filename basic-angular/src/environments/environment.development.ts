@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiurl: "https://api.memelli.com/",
-    baseurl: "https://coach.memelli.com/",
+    apiurl: "https://dummyjson.com/",
+    baseurl: "https://dummyjson.com/",
     //authToken: sessionStorage.getItem('token')
 };

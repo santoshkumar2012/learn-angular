@@ -16,6 +16,9 @@ import { PromiseComponent } from './rxjs/promise/promise.component';
 import { LoaderComponent } from './loader/loader.component';
 import { BindingComponent } from './binding/binding.component';
 import { SubjectComponent } from './rxjs/subject/subject.component';
+import { UsersComponent } from './users/users.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -34,5 +37,8 @@ export const routes: Routes = [
     {path: 'promise', component:PromiseComponent},
     {path: 'loader', component:LoaderComponent},
     {path: 'binding', component:BindingComponent},
-    {path: 'subject', component:SubjectComponent}
+    {path: 'subject', component:SubjectComponent},
+    {path: 'users', component:UsersComponent},
+    {path: 'user-form', component:UserFormComponent},
+    {path: 'dashboard', component:DashboardComponent}
 ];

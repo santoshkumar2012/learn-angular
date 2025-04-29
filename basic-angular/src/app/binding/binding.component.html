@@ -4,7 +4,10 @@
 <button (click)="clickEvent()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> Submit </button>
 <hr>
 <div class="mt-5"> 
-<input type="text" #box (keyup)="clickEvent2(box.value)" placeholder="Event Keyup" class="border-black-200 p-2" style="border: #ccc solid 2px;"> <br> <br>
+<input type="text" #box (keyup)="clickEvent2(box.value)" placeholder="Event Keyup" class="border-black-200 p-2" 
+style="border: #ccc solid 2px;"> <br> <br>
+
+
 <input type="text" placeholder="keypress" #box1 (keypress)="clickEvent2(box1.value)"  class="border-black-200 p-2" style="border: #ccc solid 2px;">
 <button (click)="clickEvents()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> Submit </button>
 </div>
@@ -29,7 +32,7 @@
     <input type="text" [attr.placeholder]="placeholder1" name="username" required style="border: #ccc solid 1px;">
 </div>
 
-<h1 style="font-size: 2rem; font-weight: 600;" class="mt-5"> Class Binding </h1>
+<!-- <h1 style="font-size: 2rem; font-weight: 600;" class="mt-5"> Class Binding </h1>
 <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-5"> 
     <div [class.active]="isActive"> Hello </div>
     <div [ngClass]="['class-one', true ? 'class-two' : false]"> Box </div>
@@ -49,8 +52,36 @@
         <input [(ngModel)]="username" type="text" placeholder="Enter Name" style="border: #ccc solid 2px; padding: 5px; margin-top: 10px;">
         <p>{{username}}</p>
     </div>
+</div> -->
+
+<h2 class="font-medium my-5"> Event Binding </h2>
+<div> 
+<input type="text" #block (keyup)="santoAnj(block.value)" style="border: #ccc solid 1px;">
+<button (click)="showContent()"> Submit </button>
+<p *ngIf="isVisiable"> Show content </p>
+<br><br>
+
+<h2 class="font-medium my-5"> Property Binding </h2>
+<input type="text" [disabled]="isDisable" style="border: #ccc solid 1px;">
+<img [src]="imgSrc" alt="">
+<input type="text" [placeholder]="placeholder2" style="border: #ccc solid 1px;">
+
+<h2 class="font-medium my-5"> Attribute Binding </h2>
+
+<div class="mt-5"> <input type="text" [attr.placeholder]="placeholder3" style="border: #ccc solid 1px;"> </div>
+
+
+<div> 
+
+<br><br>
+
+<!-- <h2> Two way Binding </h2>
+<input type="text" [(ngModel)]="data" style="border: #ccc solid 2px; padding: 5px;">
+<p> {{data}}</p> -->
+
+<!-- <button type="button" (click)="onSubmit()"> Submit </button> -->
+
+
 </div>
-
-
 
 </div>
