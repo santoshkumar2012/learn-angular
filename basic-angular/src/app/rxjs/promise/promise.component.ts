@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { rejects } from 'assert';
+import { HeaderComponent } from "../../header/header.component";
 
 @Component({
   selector: 'app-promise',
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './promise.component.html',
   styleUrl: './promise.component.css'
 })

@@ -1,0 +1,32 @@
+<!-- <app-loader *ngIf="loading"></app-loader> -->
+<header class="bg-gray-900 shadow-md px-6 py-4 flex items-center justify-between">
+    <!-- Logo / Title -->
+    <div class="text-2xl font-bold text-white">
+      <a routerLink="/dashboard">  Angular Dashboard </a>
+    </div>
+  
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex space-x-6 text-gray-100 font-medium">
+      <a routerLink="/crud" class="hover:text-blue-600"> Crud </a>
+      <a routerLink="/pipe" class="hover:text-blue-600"> Pipe </a>
+      <a routerLink="/rxjs" class="hover:text-blue-600"> Rxjs </a>
+      <a routerLink="/pagination" class="hover:text-blue-600"> Pagination </a>
+      <a routerLink="/lifecyclehook" class="hover:text-blue-600"> Lifecycle Hook </a>
+      <a routerLink="/users" class="hover:text-blue-600"> User </a>
+      <!-- <button
+      (click)="logout()"
+      class="text-sm text-red-600 font-semibold hover:underline cursor-pointer">
+      Logout
+    </button> -->
+    <button (click)="logout()">Logout</button>
+    </nav>
+  
+    <!-- Mobile Menu Button (optional) -->
+    <button class="md:hidden text-gray-700 hover:text-blue-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </header>

@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { HeaderComponent } from "../../header/header.component";
 
 @Component({
   selector: 'app-ngfor',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './ngfor.component.html',
   styleUrl: './ngfor.component.css'
 })

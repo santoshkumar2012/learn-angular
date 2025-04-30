@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpSharedService } from '../http-shared.service';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-crud',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './crud.component.html',
   styleUrl: './crud.component.css'
 })

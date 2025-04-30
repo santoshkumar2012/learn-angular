@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-binding',
   standalone: true,
-  imports: [CommonModule, FormsModule,],
+  imports: [CommonModule, FormsModule, HeaderComponent],
   templateUrl: './binding.component.html',
   styleUrl: './binding.component.css'
 })

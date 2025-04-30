@@ -4,10 +4,11 @@ import { MypipePipe } from './mypipe.pipe';
 import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { ImpurePipe } from './impure.pipe';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-pipe',
-  imports: [LowerCasePipe, CommonModule, MypipePipe, FilterPipe, FormsModule, ImpurePipe],
+  imports: [LowerCasePipe, CommonModule, MypipePipe, FilterPipe, FormsModule, ImpurePipe, HeaderComponent],
   templateUrl: './pipe.component.html',
   styleUrl: './pipe.component.css'
 })

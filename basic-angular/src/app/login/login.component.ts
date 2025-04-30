@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Component } from '@angular/core';
 import { HttpSharedService } from '../http-shared.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { response } from 'express';
 import { LoaderComponent } from "../loader/loader.component";
 
@@ -20,13 +21,14 @@ export class LoginComponent {
 constructor(
   private fb: FormBuilder,
   private http: HttpSharedService,
-  private router: Router
+  private router: Router,
+  private toastr: ToastrService
 ){
 }
 
 form_field = {
   username: ['', Validators.required],
-  password: ['', Validators.required]
+  password: ['', Validators.minLength(6)]
 }
 
 ngOnInit(){
@@ -48,22 +50,23 @@ pathFakerUser(){
       {"username": "emilys", "password": "emilyspass"}
     )
   })
+  // this.loginForm.setValue({
+  //   email: 'emilys',
+  //   password: 'emilyspass'
+  // });
 }
 
+
 login() {
-  this.loading = true
   this.http.post('auth/login', this.setPayload(this.loginForm.value)).subscribe((response: any) => {
-    console.log(response)
     if(response.accessToken){
       sessionStorage.setItem("token", response.accessToken)
+      this.toastr.success("Login is successfully.");
       this.router.navigateByUrl('dashboard')
-    } else {
+    }  else {
+      this.toastr.error("Login failed. No access token received.");
     }
-    
-  }, (error: any) => {
-    console.log("error", error)
-    //this.toastr.error("Invalid Details")
-  })
+    })
 }
 
 }

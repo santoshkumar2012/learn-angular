@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ChildComponent } from "../child/child.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-parent',
-  imports: [ChildComponent],
+  imports: [HeaderComponent],
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.css'
 })

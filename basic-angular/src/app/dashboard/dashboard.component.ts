@@ -3,26 +3,23 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { link } from 'fs';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, HeaderComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
 
-  loading: boolean = false
-
   constructor(
     private router: Router
-  ){
+    ){}
+  
+  ngOnInit() {}
 
-  }
-
-ngOnInit() {}
-
- components = [
+  components = [
     { name: 'crud', link: '/crud'},
     { name: 'pipe', link: '/pipe' },
     { name: '*ngIf', link: '/ngif' },
@@ -39,11 +36,5 @@ ngOnInit() {}
     { name: 'users', link: '/users' },
     { name: 'user form', link: '/user-form' },
  ]
-
- logout(){
-  localStorage.clear()
-  sessionStorage.clear()
-  this.router.navigateByUrl('')
-}
   
 }
