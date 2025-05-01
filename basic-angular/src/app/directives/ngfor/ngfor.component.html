@@ -2,14 +2,17 @@
 
 <div class="max-w-lg mx-auto md:max-w-5xl">
     <h1 class="uppercase tracking-wide text-3xl font-semibold mb-5"> Ng For </h1>
-    <table>
+    <table class="table table-striped">
+        <thead>
     <tr> 
-        <td> ID </td>
-        <td> Name </td>
-        <td> Age </td>
-        <td> Department </td>
-        <td> Salary </td>
+        <th scope="col"> ID </th>
+        <th scope="col"> Name </th>
+        <th scope="col"> Age </th>
+        <th scope="col"> Department </th>
+        <th scope="col"> Salary </th>
     </tr>
+    </thead>
+    <tbody> 
     <tr *ngFor="let employee of employees"> 
         <td> {{employee.id}} </td>
         <td> {{employee.name}} </td>
@@ -17,5 +20,30 @@
         <td> {{employee.department}} </td>
         <td> {{employee.salary}} </td>
     </tr>
+</tbody>
     </table>
+<hr>
+<div *ngFor="let employee of employees">
+    <ng-container *ngIf="employee.salary > 3000000; else lowSalary">
+        {{employee.name}}{{employee.salary}}
+    </ng-container>
+    <ng-template #lowSalary>
+        <div style="color: red;"> 
+            {{employee.name}}{{employee.salary}}
+        </div>        
+    </ng-template>
+</div>
+
+<hr>
+
+<div *ngIf="employees.length > 0; else nodata">
+    <div *ngFor="let emplooyee of employees">
+        {{emplooyee.name}}
+    </div>
+</div>
+
+<ng-template #nodata>
+    <p> No Data </p>
+</ng-template>
+
 </div>

@@ -59,6 +59,7 @@ style="border: #ccc solid 2px;"> <br> <br>
 <h2 class="font-medium my-5"> Event Binding </h2>
 <div> 
 <input type="text" #block (keyup)="santoAnj(block.value)" style="border: #ccc solid 1px;">
+
 <button (click)="showContent()"> Submit </button>
 <p *ngIf="isVisiable"> Show content </p>
 <br><br>

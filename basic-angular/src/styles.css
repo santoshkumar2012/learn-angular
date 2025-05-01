@@ -24,7 +24,11 @@
     visibility: visible;
   }
 
+  header a {
+    color: #fff;
+  }
+
   a {
     text-decoration: none;
-    color: #fff;
+    color: #000;
   }

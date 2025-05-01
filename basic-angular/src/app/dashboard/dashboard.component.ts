@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { link } from 'fs';
 import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, HeaderComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, HeaderComponent, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -36,5 +36,25 @@ export class DashboardComponent {
     { name: 'users', link: '/users' },
     { name: 'user form', link: '/user-form' },
  ]
+
+ isDisabled = true
+ placeholder1 = "Santosh"
+
+ visiable = !false
+
+ showContent(){
+  this.visiable = !this.visiable
+ }
+
+ data = ''
+
+
+ clickEvent2(){
+  console.log('Check--->');
+ }
+
+ eventBind( val:string){
+  console.log(val);
+ }
   
 }

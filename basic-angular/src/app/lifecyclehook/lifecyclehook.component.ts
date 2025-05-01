@@ -9,9 +9,17 @@ import { HeaderComponent } from "../header/header.component";
   styleUrl: './lifecyclehook.component.css'
 })
 export class LifecyclehookComponent {
+
   name = 'coder';
 
   fun(){
     this.name = "Value has been changed"
   }
+
+  // color = 'red';
+  // onclick(){
+  //   this.color = "Color is"
+  // }
+
+
 }

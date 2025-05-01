@@ -9,21 +9,26 @@ import { FormsModule } from '@angular/forms';
 })
 export class ChildComponent {
 
+  @Input() name: string = ''; // Receiving "name" from parent
+  changeMsg: string = '';
+  
+
   // @Input() receivedData!: string;
   // @Output() messageEvent = new EventEmitter<string>(); // Define EventEmitter
   // sendMessage() {
   //   this.messageEvent.emit("Hello Parent! This is from Child."); // Emit data to parent
   // }
 
-  @Input() item: any;
+  // @Input() item: any;
+  // @Input() items: any
 
   // constructor(){
   //   console.log("child components")
   // }
 
-  ngOnChanges(){
-    alert("Data has been updated by parent component...")
-    // console.log('Changes detected' );
-  }
+  // ngOnChanges(){
+  //   alert("Data has been updated by parent component...")
+  //   // console.log('Changes detected' );
+  // }
   
 }

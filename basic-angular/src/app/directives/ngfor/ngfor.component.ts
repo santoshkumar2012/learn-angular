@@ -22,21 +22,21 @@ employees = [
 	{
 	id: 2,
 	name: "Pragyansh Kumar",
-	age: 30,
+	age: 8,
 	department: "Human Resources",
-	salary: 5000000
+	salary: 3000000
 	},
 	{
 	id: 3,
 	name: "Anjali Kumar",
-	age: 30,
+	age: 28,
 	department: "Human Resources",
-	salary: 5000000
+	salary: 2000000
 	},
 	{
 	id: 4,
 	name: "Nityansh Kumar",
-	age: 30,
+	age: 7,
 	department: "Human Resources",
 	salary: 5000000
 	}

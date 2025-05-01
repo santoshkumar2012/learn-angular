@@ -11,7 +11,6 @@ import { HeaderComponent } from "../header/header.component";
 export class ParentComponent {
 
   parentMessage: string = 'Hello from Parent!';
-
   receivedMessage: string = '';
 
   receiveMessage(message: string) {
