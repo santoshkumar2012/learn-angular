@@ -19,26 +19,31 @@ import { SubjectComponent } from './rxjs/subject/subject.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { authGuard } from './auth.guard';
+import { EmployeeComponent } from './employee/employee.component';
+import { SimpleCrudComponent } from './simple-crud/simple-crud.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
-    {path: 'crud', component: CrudComponent},
-    {path: 'pipe', component: PipeComponent},
-    {path: 'parent', component: ParentComponent},
-    {path: 'child', component: ChildComponent},
-    {path: 'ngif', component: NgifComponent},
-    {path: 'ngfor', component: NgforComponent},
-    {path: 'ngswithch', component: NgswitchComponent},
-    {path: 'directive', component: DirectivesComponent},
-    {path: 'rxjs', component: RxjsComponent},
-    {path: 'pagination', component: PaginationComponent},
-    {path: 'lifecyclehook', component:LifecyclehookComponent},
-    {path: 'structural-directive', component:StructuralDirectiveComponent},
-    {path: 'promise', component:PromiseComponent},
-    {path: 'loader', component:LoaderComponent},
-    {path: 'binding', component:BindingComponent},
-    {path: 'subject', component:SubjectComponent},
-    {path: 'users', component:UsersComponent},
-    {path: 'user-form', component:UserFormComponent},
-    {path: 'dashboard', component:DashboardComponent}
+    {path: 'crud', component: CrudComponent, canActivate:[authGuard]},
+    {path: 'pipe', component: PipeComponent, canActivate:[authGuard]},
+    {path: 'parent', component: ParentComponent, canActivate:[authGuard]},
+    {path: 'child', component: ChildComponent, canActivate:[authGuard]},
+    {path: 'ngif', component: NgifComponent, canActivate:[authGuard]},
+    {path: 'ngfor', component: NgforComponent, canActivate:[authGuard]},
+    {path: 'ngswithch', component: NgswitchComponent, canActivate:[authGuard]},
+    {path: 'directive', component: DirectivesComponent, canActivate:[authGuard]},
+    {path: 'rxjs', component: RxjsComponent, canActivate:[authGuard]},
+    {path: 'pagination', component: PaginationComponent, canActivate:[authGuard]},
+    {path: 'lifecyclehook', component:LifecyclehookComponent, canActivate:[authGuard]},
+    {path: 'structural-directive', component:StructuralDirectiveComponent, canActivate:[authGuard]},
+    {path: 'promise', component:PromiseComponent, canActivate:[authGuard]},
+    {path: 'loader', component:LoaderComponent, canActivate:[authGuard]},
+    {path: 'binding', component:BindingComponent, canActivate:[authGuard]},
+    {path: 'subject', component:SubjectComponent, canActivate:[authGuard]},
+    {path: 'users', component:UsersComponent, canActivate:[authGuard]},
+    {path: 'user-form', component:UserFormComponent, canActivate:[authGuard]},
+    {path: 'dashboard', component:DashboardComponent, canActivate:[authGuard]},
+    {path: 'employee', component:EmployeeComponent, canActivate:[authGuard]},
+    {path: 'simple-crud', component:SimpleCrudComponent, canActivate:[authGuard]}
 ];
