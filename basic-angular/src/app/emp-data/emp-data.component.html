@@ -1,0 +1,51 @@
+
+<app-header></app-header>
+
+<div class="container mt-5">
+    <h2 class="mb-3"> Employee Data </h2>
+
+    <form class="row" [formGroup]="employee_form" (ngSubmit)="addEmployee()">
+    <div class="mb-2 col-lg-3"> 
+    <input type="text" class="form-control" placeholder="Employee Name" formControlName="emp_name">
+    <div class="error" *ngIf="employee_form.get('emp_name')?.touched && employee_form.get('emp_name')?.hasError('required')"> Employee Name is required </div>
+    </div>
+
+    <div class="mb-2 col-lg-3"> 
+    <input type="text" class="form-control" placeholder="Employee Email" formControlName="emp_email">
+    <div class="error" *ngIf="employee_form.get('emp_email')?.touched && employee_form.get('emp_email')?.hasError('required')"> Employee Email is required </div>
+    </div>
+
+   <div class="mb-2 col-lg-3"> 
+    <input type="text" class="form-control" placeholder="Employee Phone" formControlName="emp_phone">
+    <div class="error" *ngIf="employee_form.get('emp_phone')?.touched && employee_form.get('emp_phone')?.hasError('required')"> Employee Phone is required </div>
+    </div>
+
+    <div class="col-lg-3"> <button class="btn btn-success" type="submit"> Submit </button></div>
+
+    </form>
+
+
+    <table class="table table-bordered mt-5">
+        <thead>
+            <tr> 
+                <th scope="col"> Employee Id </th>
+                <th scope="col"> Employee Name </th>
+                <th scope="col"> Employee Email </th>
+                <th scope="col"> Employee Phone </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let employee of employee_details">
+                <td> {{employee.id}} </td>
+                <td> {{employee.emp_name}} </td>
+                <td> {{employee.emp_email}} </td>
+                <td> {{employee.emp_phone}} </td>
+                <td> <button (click)="deleteEmployee(employee.id)" class="btn btn-danger"> Delete </button></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+</div>

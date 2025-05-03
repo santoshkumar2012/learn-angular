@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<div class="container">
+
+    <h2 class="my-3 mb-5"> Dynamic Crud Operation </h2>
+
+
+    <div class="dynamic-form shadow p-3 col-lg-12 m-auto mb-5 card">
+
+        <div class="card-header d-flex justify-content-between mb-4"> 
+            <h5> Employee Form </h5>
+            <button (click)="employeeFormToggle()"> {{ !employee_Toggle ? 'Add Employee':'Close Form' }} </button>
+        </div>
+
+        <form [formGroup]="employee_form" (ngSubmit)="saveEmployee()" *ngIf="employee_Toggle">
+        <div class="row m-auto"> 
+        <div class="col-lg-3"> 
+        <input type="text" class="form-control" formControlName="emp_name" placeholder="Employee Name">
+        <div class="error" *ngIf="employee_form.get('emp_name')?.touched && employee_form.get('emp_name')?.hasError('required')"> Employee Name is Invalid </div>
+        </div>
+
+        <div class="col-lg-3">  
+        <input type="text" class="form-control" formControlName="emp_email" placeholder="Employee Email">
+        <div class="error" *ngIf="employee_form.get('emp_email')?.touched && employee_form.get('emp_email')?.hasError('required')"> Employee Email is Invalid </div>
+        </div>
+
+        <div class="col-lg-3"> 
+        <input type="text" class="form-control" formControlName="emp_role" placeholder="Employee Role">
+        <div class="error" *ngIf="employee_form.get('emp_role')?.touched && employee_form.get('emp_role')?.hasError('required')"> Employee Role is Invalid </div>
+        </div>
+        <div class="col-lg-3">  <button class="btn btn-primary" type="submit" [disabled]="!employee_form.valid"> {{ operation }} Employee </button></div>
+    </div>    
+    </form>
+
+    </div>
+
+    <div *ngIf="!employee_details.length">  <h5> No Data </h5></div>
+
+    <table class="table table-bordered mt-3" *ngIf="employee_details.length">
+        <thead>
+          <tr>
+            <th>Employee ID </th>
+            <th>Employee Name</th>
+            <th>Employee Email</th>
+            <th>Employee Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employee_details">
+            <td> {{employee.id}} </td>
+            <td> {{employee.emp_name}} </td>
+            <td> {{employee.emp_email}} </td>
+            <td> {{employee.emp_role}} </td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" (click)="getDataForEdit(employee.id)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+</div>

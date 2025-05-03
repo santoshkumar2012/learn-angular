@@ -22,6 +22,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './auth.guard';
 import { EmployeeComponent } from './employee/employee.component';
 import { SimpleCrudComponent } from './simple-crud/simple-crud.component';
+import { DynamicCrudComponent } from './dynamic-crud/dynamic-crud.component';
+import { EmpDataComponent } from './emp-data/emp-data.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -45,5 +47,7 @@ export const routes: Routes = [
     {path: 'user-form', component:UserFormComponent, canActivate:[authGuard]},
     {path: 'dashboard', component:DashboardComponent, canActivate:[authGuard]},
     {path: 'employee', component:EmployeeComponent, canActivate:[authGuard]},
-    {path: 'simple-crud', component:SimpleCrudComponent, canActivate:[authGuard]}
+    {path: 'simple-crud', component:SimpleCrudComponent, canActivate:[authGuard]},
+    {path: 'dynamic-crud', component:DynamicCrudComponent, canActivate:[authGuard]},
+    {path: 'emp-data', component:EmpDataComponent, canActivate:[authGuard]}
 ];
