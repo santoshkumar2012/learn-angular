@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { resolve } from 'path';
 import { Observable } from 'rxjs';
 import { HeaderComponent } from "../header/header.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-rxjs',
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, RouterLink],
   templateUrl: './rxjs.component.html',
   styleUrl: './rxjs.component.css'
 })

@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<div class="container">
+
+    <h2 class="my-3 mb-5"> Crud Operation with Local Storage For Practise </h2>
+    <div class="dynamic-form shadow p-3 col-lg-12 m-auto mb-5 card">
+
+        <div class="d-flex justify-content-between mb-4"> 
+            <h5> <span class="mb-4"> Employee Form  </span></h5>
+            <button class="btn btn-success">  </button>
+        </div>
+
+        <form [formGroup]="emp_form" (ngSubmit)="saveForm()">
+        <div class="row m-auto"> 
+        <div class="col-lg-3"> 
+        <input type="text" class="form-control" formControlName="emp_name" placeholder="Employee Name">
+        <div class="error" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> 
+          Employee Name is Invalid </div>
+        </div>
+
+        <div class="col-lg-3">  
+        <input type="text" class="form-control" formControlName="emp_email" placeholder="Employee Email">
+        <div class="error" *ngIf="emp_form.get('emp_email')?.touched && emp_form.get('emp_email')?.hasError('required')"> Employee Email is Invalid </div>
+        </div>
+
+        <div class="col-lg-3"> 
+        <input type="text" class="form-control" formControlName="emp_role" placeholder="Employee Role">
+        <div class="error" *ngIf="emp_form.get('emp_role')?.touched && emp_form.get('emp_role')?.hasError('required')"> Employee Role is Invalid </div>
+        </div>
+        <div class="col-lg-3">  <button class="btn btn-primary" type="submit" [disabled]="emp_form.invalid"> Employee </button></div>
+    </div>    
+    </form>
+
+    </div>
+
+    <!-- <div>  <h5> No Data </h5></div> -->
+
+    <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>Employee ID </th>
+            <th>Employee Name</th>
+            <th>Employee Email</th>
+            <th>Employee Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of emp_details">
+            <td> {{emp.id}} </td>
+            <td> {{emp.emp_name}} </td>
+            <td> {{emp.emp_email}} </td>
+            <td> {{emp.emp_role}} </td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2">Edit</button>
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

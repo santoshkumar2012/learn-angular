@@ -24,6 +24,9 @@ import { EmployeeComponent } from './employee/employee.component';
 import { SimpleCrudComponent } from './simple-crud/simple-crud.component';
 import { DynamicCrudComponent } from './dynamic-crud/dynamic-crud.component';
 import { EmpDataComponent } from './emp-data/emp-data.component';
+import { CrudLsComponent } from './crud/crud-ls/crud-ls.component';
+import { CrudApiComponent } from './crud/crud-api/crud-api.component';
+import { CrudLgPractiseComponent } from './crud/crud-lg-practise/crud-lg-practise.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -49,5 +52,8 @@ export const routes: Routes = [
     {path: 'employee', component:EmployeeComponent, canActivate:[authGuard]},
     {path: 'simple-crud', component:SimpleCrudComponent, canActivate:[authGuard]},
     {path: 'dynamic-crud', component:DynamicCrudComponent, canActivate:[authGuard]},
-    {path: 'emp-data', component:EmpDataComponent, canActivate:[authGuard]}
+    {path: 'emp-data', component:EmpDataComponent, canActivate:[authGuard]},
+    {path: 'crud-ls', component:CrudLsComponent, canActivate:[authGuard]},
+    {path: 'crud-api', component:CrudApiComponent, canActivate:[authGuard]},
+    {path: 'crud-practise', component:CrudLgPractiseComponent, canActivate:[authGuard]}
 ];
