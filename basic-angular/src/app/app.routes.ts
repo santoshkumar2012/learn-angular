@@ -27,6 +27,9 @@ import { EmpDataComponent } from './emp-data/emp-data.component';
 import { CrudLsComponent } from './crud/crud-ls/crud-ls.component';
 import { CrudApiComponent } from './crud/crud-api/crud-api.component';
 import { CrudLgPractiseComponent } from './crud/crud-lg-practise/crud-lg-practise.component';
+import { ObservableComponent } from './rxjs/observable/observable.component';
+import { AllComponent } from './rxjs/observable/all/all.component';
+import { FromEventComponent } from './rxjs/observable/all/from-event/from-event.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -55,5 +58,8 @@ export const routes: Routes = [
     {path: 'emp-data', component:EmpDataComponent, canActivate:[authGuard]},
     {path: 'crud-ls', component:CrudLsComponent, canActivate:[authGuard]},
     {path: 'crud-api', component:CrudApiComponent, canActivate:[authGuard]},
-    {path: 'crud-practise', component:CrudLgPractiseComponent, canActivate:[authGuard]}
+    {path: 'crud-practise', component:CrudLgPractiseComponent, canActivate:[authGuard]},
+    {path: 'observable', component:ObservableComponent, canActivate:[authGuard]},
+    {path: 'all', component:AllComponent, canActivate:[authGuard]},
+    {path: 'from-event', component:FromEventComponent, canActivate:[authGuard]}
 ];

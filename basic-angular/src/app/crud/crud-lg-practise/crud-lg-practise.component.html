@@ -7,10 +7,10 @@
 
         <div class="d-flex justify-content-between mb-4"> 
             <h5> <span class="mb-4"> Employee Form  </span></h5>
-            <button class="btn btn-success">  </button>
+            <button class="btn btn-success" (click)="formToggle()"> Add Employee Data </button>
         </div>
 
-        <form [formGroup]="emp_form" (ngSubmit)="saveForm()">
+        <form [formGroup]="emp_form" (ngSubmit)="saveEmployee()" *ngIf="isToggle">
         <div class="row m-auto"> 
         <div class="col-lg-3"> 
         <input type="text" class="form-control" formControlName="emp_name" placeholder="Employee Name">
@@ -52,8 +52,8 @@
             <td> {{emp.emp_email}} </td>
             <td> {{emp.emp_role}} </td>
             <td>
-              <button class="btn btn-sm btn-warning me-2">Edit</button>
-              <button class="btn btn-sm btn-danger">Delete</button>
+              <button class="btn btn-sm btn-warning me-2" (click)="getDataForEdit(emp.id)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteEmp(emp.id)">Delete</button>
             </td>
           </tr>
         </tbody>

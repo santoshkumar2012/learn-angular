@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container mt-3">
+    <h2 class="mb-5"> observable 
+        <a routerLink="/all" style="font-size: 1.2rem; cursor: pointer;"> Observable Operator List </a></h2> 
+    <div class="row">
+        <div class="col-lg-4">
+            <h6>Observable Stream  </h6>
+            <ol>
+                <li> User Input ( Button click Event) </li>
+                <li> Http Request </li>
+                <li> Array </li>
+                <li> Object </li>
+            </ol>
+        </div>
+
+        <div class="col-lg-8">
+            <h6>Observable Handle ( Subscribe)  </h6>
+            <ol>
+                <li> Data </li>
+                <li> Error </li>
+                <li> Completion </li>
+            </ol>
+            <pre class="bg-light">
+                <code>
+                    .subscribe(
+                        (data) => console.log(daa),
+                        (error) => console.log(error)
+                        () => console.log('complete')
+                    )
+                </code>
+            </pre>
+        </div>
+    </div>
+    </div>
+

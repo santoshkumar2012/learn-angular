@@ -52,7 +52,6 @@ export class CrudLsComponent {
     }
   
     addEmployee() {
-      
       const emp_id = (this.employee_details.at(-1)?.id ?? 0) + 1;
   
       this.employee_details.push({
@@ -85,6 +84,7 @@ export class CrudLsComponent {
       this.updateRecordId = emp_id
       let data = this.employee_details.filter((empData: any) => empData.id == emp_id)
       this.employee_form.patchValue(data[0])
+
       this.operation = "Update"
       this.employee_Toggle = true
     }

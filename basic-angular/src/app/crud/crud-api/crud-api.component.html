@@ -1,5 +1,85 @@
 <app-header></app-header>
 
 <div class="container mt-5">
-    <h2> Crud Operation with API </h2>
+    <h2 class="mb-5"> Crud Operation with API </h2>
+
+    <div class="container">
+        <div class="dynamic-form shadow p-3 col-lg-12 m-auto mb-5 card">
+    
+            <div class="d-flex justify-content-between mb-4"> 
+                <h5> <span class="mb-4"> User Form  </span></h5>
+                <button class="btn btn-success"> Add User </button>
+            </div>
+    
+            <form [formGroup]="user_form" (ngSubmit)="saveForm()">
+            <div class="row m-auto"> 
+            <div class="col-lg-3 mb-4"> 
+            <input type="text" class="form-control" formControlName="username" placeholder="Username">
+            <div class="error" *ngIf="this.user_form.get('username')?.touched && this.user_form.get('username')?.hasError('required')"> Username is Invalid </div>
+            </div>
+    
+            <div class="col-lg-3 mb-4">  
+            <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+            <div class="error" *ngIf="this.user_form.get('firstName')?.touched && this.user_form.get('firstName')?.hasError('required')"> First Name is Invalid </div>
+            </div>
+    
+            <div class="col-lg-3 mb-4"> 
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+            <div class="error" *ngIf="this.user_form.get('lastName')?.touched && this.user_form.get('lastName')?.hasError('required')"> Last Name is Invalid </div>
+            </div>
+
+            <div class="col-lg-3 mb-4"> 
+                <input type="text" class="form-control" formControlName="email" placeholder="Email">
+                <div class="error" *ngIf="this.user_form.get('email')?.touched && this.user_form.get('email')?.hasError('required')"> Email is Invalid </div>
+                </div>
+
+            <div class="col-lg-3 mb-4"> 
+                <input type="text" class="form-control" formControlName="phone" placeholder="Phone">
+                <div class="error" *ngIf="this.user_form.get('phone')?.touched && this.user_form.get('phone')?.hasError('required')"> Phone is Invalid </div>
+            </div>
+
+            <div class="col-lg-3 mb-4"> 
+                <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                <div class="error" *ngIf="this.user_form.get('address')?.touched && this.user_form.get('address')?.hasError('required')"> Address is Invalid </div>
+            </div>
+
+            <div class="col-lg-3 mb-4">  
+                <button class="btn btn-primary" type="submit"> Submit </button></div>
+        </div>    
+        </form>
+    
+        </div>
+    
+        <!-- <div *ngIf="!User_details.length">  <h5> No Data </h5></div> -->
+    
+        <table class="table table-bordered mt-3">
+            <thead>
+              <tr>
+                <th> Username </th>
+                <th> Name </th>
+                <th> Gender </th>
+                <th> Email </th>
+                <th> Phone </th>
+                <th> Address </th>
+                <th> Action </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td> {{user.username}} </td>
+                <td> {{user.firstName}} {{user.lastName}} </td>
+                <td> {{user.gender}} </td>
+                <td> {{user.email}} </td>
+                <td> {{user.phone}} </td>
+                <td> {{user.address?.address}} </td>
+                <td>
+                  <button class="btn btn-sm btn-warning me-2" (click)="setUser(user)">Edit</button>
+                  <button class="btn btn-sm btn-danger" (click)="deActivatedUser(user)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+
 </div>
