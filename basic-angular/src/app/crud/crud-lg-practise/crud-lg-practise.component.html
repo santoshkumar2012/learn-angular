@@ -7,15 +7,14 @@
 
         <div class="d-flex justify-content-between mb-4"> 
             <h5> <span class="mb-4"> Employee Form  </span></h5>
-            <button class="btn btn-success" (click)="formToggle()"> Add Employee Data </button>
+            <button class="btn btn-success"> Add Employee Data </button>
         </div>
 
-        <form [formGroup]="emp_form" (ngSubmit)="saveEmployee()" *ngIf="isToggle">
+        <form [formGroup]="emp_form" (ngSubmit)="saveEmployee()">
         <div class="row m-auto"> 
         <div class="col-lg-3"> 
         <input type="text" class="form-control" formControlName="emp_name" placeholder="Employee Name">
-        <div class="error" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> 
-          Employee Name is Invalid </div>
+        <div class="error" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> Employee Name is Invalid </div>
         </div>
 
         <div class="col-lg-3">  
@@ -27,7 +26,7 @@
         <input type="text" class="form-control" formControlName="emp_role" placeholder="Employee Role">
         <div class="error" *ngIf="emp_form.get('emp_role')?.touched && emp_form.get('emp_role')?.hasError('required')"> Employee Role is Invalid </div>
         </div>
-        <div class="col-lg-3">  <button class="btn btn-primary" type="submit" [disabled]="emp_form.invalid"> Employee </button></div>
+        <div class="col-lg-3">  <button class="btn btn-primary" type="submit"> Employee </button></div>
     </div>    
     </form>
 
@@ -52,8 +51,8 @@
             <td> {{emp.emp_email}} </td>
             <td> {{emp.emp_role}} </td>
             <td>
-              <button class="btn btn-sm btn-warning me-2" (click)="getDataForEdit(emp.id)">Edit</button>
-              <button class="btn btn-sm btn-danger" (click)="deleteEmp(emp.id)">Delete</button>
+              <button class="btn btn-sm btn-warning me-2" (click)="empUpdateEdit(emp.id)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteEmployee(emp.id)">Delete</button>
             </td>
           </tr>
         </tbody>

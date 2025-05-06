@@ -30,6 +30,9 @@ import { CrudLgPractiseComponent } from './crud/crud-lg-practise/crud-lg-practis
 import { ObservableComponent } from './rxjs/observable/observable.component';
 import { AllComponent } from './rxjs/observable/all/all.component';
 import { FromEventComponent } from './rxjs/observable/all/from-event/from-event.component';
+import { IntervalComponent } from './rxjs/observable/all/interval/interval.component';
+import { OfFromComponent } from './rxjs/observable/all/of-from/of-from.component';
+import { ToarrayComponent } from './rxjs/observable/all/toarray/toarray.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -61,5 +64,8 @@ export const routes: Routes = [
     {path: 'crud-practise', component:CrudLgPractiseComponent, canActivate:[authGuard]},
     {path: 'observable', component:ObservableComponent, canActivate:[authGuard]},
     {path: 'all', component:AllComponent, canActivate:[authGuard]},
-    {path: 'from-event', component:FromEventComponent, canActivate:[authGuard]}
+    {path: 'from-event', component:FromEventComponent, canActivate:[authGuard]},
+    {path: 'interval', component:IntervalComponent, canActivate:[authGuard]},
+    {path: 'off-from', component:OfFromComponent, canActivate:[authGuard]},
+    {path: 'toarray', component:ToarrayComponent, canActivate:[authGuard]}
 ];

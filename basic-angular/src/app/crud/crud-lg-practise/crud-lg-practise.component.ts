@@ -12,47 +12,46 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class CrudLgPractiseComponent {
 
   emp_form!: FormGroup
-
   emp_details: any = []
-  isToggle = false
-  updateRecordId: any
 
-  constructor(private fb: FormBuilder){}
+  empUpdateRecordid: any
+
+  constructor( private fb: FormBuilder){}
 
   emp_field = {
-    emp_id    : [''],
-    emp_name  : ['', Validators.required],
-    emp_email : ['', Validators.required],
-    emp_role  : ['', Validators.required]
-    
-  }
-
-  formToggle(){
-    this.isToggle = !this.isToggle
+    emp_id: [''],
+    emp_name: ['', Validators.required],
+    emp_email: ['', Validators.required],
+    emp_role: ['', Validators.required]
   }
 
   ngOnInit(){ 
-    this.initializeform()
+    this.initializeForm()
     let emp_data = localStorage.getItem('employeeData')
-    if(emp_data) {
+    if(emp_data){
       this.emp_details = JSON.parse(emp_data)
     }
+   }
+
+  initializeForm(){
+    this.emp_form = this.fb.group(this.emp_field)
   }
 
-  initializeform(){ this.emp_form = this.fb.group(this.emp_field)}
+  resetFrom(){
+    this.initializeForm()
+  }
 
-  reset(){this.initializeform()}
-
-  saveEmployee(){ 
-    if (this.updateRecordId) {
-      this.updateEmployee();
-    } else {
-      this.addEmployee();
+  saveEmployee(){
+    if(this.empUpdateRecordid){
+      this.updateEmp()
+    }
+    else {
+      this.addEmployee()
     }
   }
 
   addEmployee(){
-    const emp_id = (this.emp_details.at(-1)?.id ?? 0) + 1;
+    let emp_id = (this.emp_details.at(-1)?.id ?? 0) + 1;
 
     this.emp_details.push({
       "id": emp_id,
@@ -60,40 +59,32 @@ export class CrudLgPractiseComponent {
       "emp_email": this.emp_form.value.emp_email,
       "emp_role": this.emp_form.value.emp_role,
     })
-
-    this.reset();
-    this.saveToLocalStorage();
+    this.resetFrom()
+    this.toSaveLocalStorage()
   }
 
-  updateEmployee() {
-      
-    const found = this.emp_details.filter((empData: any) => empData.id == this.updateRecordId);
-
-    if (found) {
+  updateEmp(){
+    let found = this.emp_details.filter((emp_data: any) => emp_data.id == this.empUpdateRecordid)
+    if(found){
       found[0].emp_name = this.emp_form.value.emp_name;
       found[0].emp_email = this.emp_form.value.emp_email;
-      found[0].emp_role = this.emp_form.value.emp_role;
+      found[0].emp_role = this.emp_form.value.emp_role
     }
-  
-    this.saveToLocalStorage();
-    this.reset();
+    this.resetFrom()
+    this.toSaveLocalStorage()
   }
 
-  getDataForEdit(emp_id: any){
-    this.updateRecordId = emp_id
-    let data = this.emp_details.filter((empData: any) => empData.id == emp_id)
+  empUpdateEdit(emp_id: any){
+    this.empUpdateRecordid = emp_id;
+    let data = this.emp_details.filter((emp_data: any) => emp_data.id == emp_id)
     this.emp_form.patchValue(data[0])
-
-    // this.operation = "Update"
-    this.isToggle = true
   }
 
-  deleteEmp(emp_id: any){
-    this.emp_details = this.emp_details.filter((empData: any) => empData.id != emp_id);
-    this.saveToLocalStorage();
+  deleteEmployee(emp_id: any){
+    this.emp_details = this.emp_details.filter((emp_data: any) => emp_data.id != emp_id)
   }
 
-  saveToLocalStorage(){
+  toSaveLocalStorage(){
     localStorage.setItem('employeeData', JSON.stringify(this.emp_details))
   }
 

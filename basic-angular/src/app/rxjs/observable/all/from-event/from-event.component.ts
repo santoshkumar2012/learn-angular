@@ -12,17 +12,41 @@ import { CommonModule } from '@angular/common';
 export class FromEventComponent implements AfterViewInit {
 
   @ViewChild('addBtn') addBtn!: ElementRef;
+  @ViewChild('myButton') button!: ElementRef;
+
 
   constructor(){}
 
   ngOnInit(){}
 
   ngAfterViewInit(){
-    console.log('View Initialized', this.addBtn);
-
+    // console.log('View Initialized', this.addBtn);
+    let count = 1
     fromEvent(this.addBtn.nativeElement, 'click').subscribe(res => {
-      console.log('Button clicked!', res);
+      let countVel = 'video '+ count++
+      console.log(countVel);
+      this.print(countVel);
     })
   }
+
+  print(val: string){
+    let el = document.createElement('li');
+    el.innerText = val;
+    document.getElementById('elcontainer')?.appendChild(el)
+  }
+
+
+  // fromEvent(this.button.nativeElement, 'click')
+  //     .subscribe(() => {
+  //       console.log('Button was clicked!');
+  //     });
+
+  // fromEvent(window, 'scroll').subscribe(() => {
+  //   console.log('Scrolling...');
+  // });
+
+    
+
+    
 
 }

@@ -3,30 +3,30 @@
 <div class="container">
     <h2 class="mt-5"> Observable </h2>
     <h5> From Event </h5>
-
+    <p> fromEvent is an RxJS creation operator that converts a DOM event (or event target) into an observable sequence. <br> 
+    <strong> common user cases - Click events, Scroll events, Mouse events, Key press events, Input value changes (for native elements) </strong></p>
 
     <div class="row mt-4">
+        
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header"> Add Video </div>
                 <div class="card-body"> <button #addBtn class="btn btn-primary"> Add </button></div>
             </div>
         </div>
+
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header"> List  </div>
                 <div class="card-body"> 
-
-                    <ul>
-                        <li> Video 1 </li>
-                        <li> Video 2 </li>
-                        <li> Video 3 </li>
+                    <ul id="elcontainer">
                     </ul>
-                    
-                   
-                
+
+                    <button #myButton>Click Me</button>
+
                 </div>
             </div>
         </div>
+
     </div>
 </div>
