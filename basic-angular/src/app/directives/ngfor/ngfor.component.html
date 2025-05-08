@@ -13,16 +13,41 @@
     </tr>
     </thead>
     <tbody> 
-    <tr *ngFor="let employee of employees"> 
-        <td> {{employee.id}} </td>
-        <td> {{employee.name}} </td>
-        <td> {{employee.age}} </td>
-        <td> {{employee.department}} </td>
-        <td> {{employee.salary}} </td>
+    <tr *ngFor="let emp of employees"> 
+        <td> {{emp.empid}} </td>
+        <td> {{emp.name}} </td>
+        <td> {{emp.age}} </td>
+        <td> {{emp.department}} </td>
+        <td> {{emp.salary}} </td>
     </tr>
 </tbody>
     </table>
+
 <hr>
+
+<div *ngIf="employees && employees.length > 0; else nodata"> 
+    <div *ngFor="let emp of employees">
+        <ng-container *ngIf="emp.salary > 400000; else highsalary">
+           <span style="color: red;">  {{emp.name}} </span>
+        </ng-container>
+        <ng-template #highsalary>
+            {{emp.name}}
+        </ng-template>
+    </div>
+</div>
+<ng-template #nodata> <p> No Data </p></ng-template>
+
+
+<!-- <div *ngIf="isToggle">
+    <p> websanto </p>
+</div> -->
+
+
+
+<p *ngIf="isToggle"> Normal content </p>
+<button type="button" class="btn btnprimary" (click)="clickToggle()"> Toggle </button>
+
+<!-- <hr>
 <div *ngFor="let employee of employees">
     <ng-container *ngIf="employee.salary > 3000000; else lowSalary">
         {{employee.name}}{{employee.salary}}
@@ -44,6 +69,6 @@
 
 <ng-template #nodata>
     <p> No Data </p>
-</ng-template>
+</ng-template> -->
 
 </div>

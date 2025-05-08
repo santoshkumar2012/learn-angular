@@ -11,34 +11,47 @@ import { HeaderComponent } from "../../header/header.component";
 })
 export class NgforComponent {
 
+	isToggle = true
+
+	clickToggle(){
+		this.isToggle = !this.isToggle
+	}
+
 employees = [
 	{
-	id: 1,
-	name: "Santosh Kumar",
-	age: 30,
-	department: "Human Resources",
-	salary: 5000000
+		empid: 1,
+		name: "Santosh Kumar",
+		age: 45,
+		department: "Angular Developer",
+		salary: 1000000,
 	},
 	{
-	id: 2,
-	name: "Pragyansh Kumar",
-	age: 8,
-	department: "Human Resources",
-	salary: 3000000
+		empid: 2,
+		name: "Achyut",
+		age: 45,
+		department: "Web Developer",
+		salary: 300000,
 	},
 	{
-	id: 3,
-	name: "Anjali Kumar",
-	age: 28,
-	department: "Human Resources",
-	salary: 2000000
+		empid: 3,
+		name: "Gorakh",
+		age: 45,
+		department: "Software Developer",
+		salary: 200000,
 	},
 	{
-	id: 4,
-	name: "Nityansh Kumar",
-	age: 7,
-	department: "Human Resources",
-	salary: 5000000
+		empid: 4,
+		name: "Saksham",
+		age: 45,
+		department: "Software",
+		salary: 300000,
+	},
+	{
+		empid: 5,
+		name: "Pankaj",
+		age: 45,
+		department: "Software Development",
+		salary: 500000,
 	}
 ]
 

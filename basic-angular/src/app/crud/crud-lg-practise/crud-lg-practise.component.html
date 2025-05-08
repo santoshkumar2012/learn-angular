@@ -10,7 +10,7 @@
             <button class="btn btn-success"> Add Employee Data </button>
         </div>
 
-        <form [formGroup]="emp_form" (ngSubmit)="saveEmployee()">
+        <form [formGroup]="emp_form" (ngSubmit)="saveEmployeeData()">
         <div class="row m-auto"> 
         <div class="col-lg-3"> 
         <input type="text" class="form-control" formControlName="emp_name" placeholder="Employee Name">
@@ -51,8 +51,8 @@
             <td> {{emp.emp_email}} </td>
             <td> {{emp.emp_role}} </td>
             <td>
-              <button class="btn btn-sm btn-warning me-2" (click)="empUpdateEdit(emp.id)">Edit</button>
-              <button class="btn btn-sm btn-danger" (click)="deleteEmployee(emp.id)">Delete</button>
+              <button class="btn btn-sm btn-warning me-2" (click)="updateRecordEdit(emp.id)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteEmp(emp.id)">Delete</button>
             </td>
           </tr>
         </tbody>
