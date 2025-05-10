@@ -1,92 +1,105 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crud-lg-practise',
-  imports: [HeaderComponent, ReactiveFormsModule, CommonModule],
+  imports: [HeaderComponent, ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './crud-lg-practise.component.html',
   styleUrl: './crud-lg-practise.component.css'
 })
 export class CrudLgPractiseComponent {
 
-  emp_form!: FormGroup
-  emp_details: any = []
-  updateRecordid: any
-  
-  constructor(private fb: FormBuilder){}
+  emp_form!: FormGroup;
+  emp_details = [
+    {
+      emp_id: 1,
+      emp_name: "Achyut Kadam Singh",
+      emp_email: "achyut@gmail.com",
+      emp_role: "WebDeveloper"
+    },
+    {
+      emp_id: 2,
+      emp_name: "Gorakh Sans",
+      emp_email: "gorakh@gmail.com",
+      emp_role: "Fullstack Developer"
+    },
+    {
+      emp_id: 3,
+      emp_name: "Achyut Kadam",
+      emp_email: "achyut@gmail.com",
+      emp_role: "Senior webDeveloper"
+    }
+  ];
+  empUpdateid: number | null = null;
+
+  constructor(private fb: FormBuilder) {}
 
   emp_fields = {
-    emp_id    : [''],
-    emp_name  : ['', Validators.required],
-    emp_email : ['', Validators.required],
-    emp_role  : ['', Validators.required]
+    emp_id: [''],
+    emp_name: ['', Validators.required],
+    emp_email: ['', Validators.required],
+    emp_role: ['', Validators.required]
+  };
+
+  ngOnInit() {
+    this.intializeForm();
   }
 
-  ngOnInit(){ 
-    this.initializeForm()
-    let emp_data = localStorage.getItem('employeeData')
-    if(emp_data){
-      this.emp_details = JSON.parse(emp_data)
+  intializeForm() {
+    this.emp_form = this.fb.group(this.emp_fields);
+  }
+
+  resetForm() {
+    this.intializeForm();
+    this.empUpdateid = null;
+  }
+
+  saveEmployeeData() {
+    if (this.empUpdateid !== null) {
+      this.empUpdate();
+    } else {
+      this.createEmp();
     }
   }
 
-  initializeForm(){
-    this.emp_form = this.fb.group(this.emp_fields)
-  }
-
-  resetForm(){ this.initializeForm()}
-
-  saveEmployeeData(){
-    if(this.updateRecordid){
-      this.updateEmp()
-    }else{
-      this.createEmp()
-    }
-  }
-
-  createEmp(){
-    let emp_id = (this.emp_details.at(-1)?.id ?? 0) + 1;
+  createEmp() {
+    const newId = this.emp_details.length > 0
+      ? Math.max(...this.emp_details.map(emp => emp.emp_id)) + 1
+      : 1;
 
     this.emp_details.push({
-      "id": emp_id,
-      "emp_name"  : this.emp_form.value.emp_name,
-      "emp_email" : this.emp_form.value.emp_email,
-      "emp_role"  : this.emp_form.value.emp_role
-    })
+      emp_id: newId,
+      emp_name: this.emp_form.value.emp_name,
+      emp_email: this.emp_form.value.emp_email,
+      emp_role: this.emp_form.value.emp_role
+    });
 
-    this.tosaveLocalHost()
-    this.resetForm()
+    this.resetForm();
   }
 
-  updateEmp(){
-    let found = this.emp_details.filter((emp_data: any) => emp_data.id == this.updateRecordid)
-    if(found){
-      found[0].emp_name = this.emp_form.value.emp_name,
-      found[0].emp_email = this.emp_form.value.emp_email,
-      found[0].emp_role = this.emp_form.value.emp_role
+  empUpdate() {
+    const index = this.emp_details.findIndex(emp => emp.emp_id === this.empUpdateid);
+    if (index > -1) {
+      this.emp_details[index].emp_name = this.emp_form.value.emp_name;
+      this.emp_details[index].emp_email = this.emp_form.value.emp_email;
+      this.emp_details[index].emp_role = this.emp_form.value.emp_role;
     }
-    this.tosaveLocalHost()
-    this.resetForm()
+
+    this.resetForm();
   }
 
-  updateRecordEdit(emp_id: any){
-    this.updateRecordid = emp_id
-    let data = this.emp_details.filter((emp_data: any) => emp_data.id == emp_id)
-    if(data){
-      this.emp_form.patchValue(data[0])
+  empUpdateEdit(emp_id: number) {
+    this.empUpdateid = emp_id;
+    const emp = this.emp_details.find(emp => emp.emp_id === emp_id);
+    if (emp) {
+      this.emp_form.patchValue(emp);
     }
   }
 
-
-  deleteEmp(emp_id: any){
-    this.emp_details = this.emp_details.filter((emp_data:any) => emp_data.id != emp_id)
-    this.tosaveLocalHost()
+  deleteEmp(emp_id: number) {
+    this.emp_details = this.emp_details.filter(emp => emp.emp_id !== emp_id);
+    this.resetForm();
   }
-
-  tosaveLocalHost(){
-    localStorage.setItem('employeeData', JSON.stringify(this.emp_details))
-  }
-
 }

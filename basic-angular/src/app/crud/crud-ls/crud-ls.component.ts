@@ -79,7 +79,6 @@ export class CrudLsComponent {
       this.resetForm();
     }
     
-  
     getDataForEdit(emp_id: any){
       this.updateRecordId = emp_id
       let data = this.employee_details.filter((empData: any) => empData.id == emp_id)

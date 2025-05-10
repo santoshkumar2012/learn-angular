@@ -11,24 +11,24 @@
         </div>
 
         <form [formGroup]="emp_form" (ngSubmit)="saveEmployeeData()">
-        <div class="row m-auto"> 
-        <div class="col-lg-3"> 
-        <input type="text" class="form-control" formControlName="emp_name" placeholder="Employee Name">
-        <div class="error" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> Employee Name is Invalid </div>
-        </div>
-
-        <div class="col-lg-3">  
-        <input type="text" class="form-control" formControlName="emp_email" placeholder="Employee Email">
-        <div class="error" *ngIf="emp_form.get('emp_email')?.touched && emp_form.get('emp_email')?.hasError('required')"> Employee Email is Invalid </div>
-        </div>
-
-        <div class="col-lg-3"> 
-        <input type="text" class="form-control" formControlName="emp_role" placeholder="Employee Role">
-        <div class="error" *ngIf="emp_form.get('emp_role')?.touched && emp_form.get('emp_role')?.hasError('required')"> Employee Role is Invalid </div>
-        </div>
-        <div class="col-lg-3">  <button class="btn btn-primary" type="submit"> Employee </button></div>
-    </div>    
-    </form>
+          <div class="row m-auto"> 
+          <div class="col-lg-3"> 
+          <input type="text" class="form-control" formControlName="emp_name" placeholder="Employee Name">
+          <div class="error" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> Employee Name is Invalid </div>
+          </div>
+  
+          <div class="col-lg-3">  
+          <input type="text" class="form-control" formControlName="emp_email" placeholder="Employee Email">
+          <div class="error" *ngIf="emp_form.get('emp_email')?.touched && emp_form.get('emp_email')?.hasError('required')"> Employee Email is Invalid </div>
+          </div>
+  
+          <div class="col-lg-3"> 
+          <input type="text" class="form-control" formControlName="emp_role" placeholder="Employee Role">
+          <div class="error" *ngIf="emp_form.get('emp_role')?.touched && emp_form.get('emp_role')?.hasError('required')"> Employee Role is Invalid </div>
+          </div>
+          <div class="col-lg-3">  <button class="btn btn-primary" type="submit"> Employee </button></div>
+      </div>    
+      </form>
 
     </div>
 
@@ -46,13 +46,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let emp of emp_details">
-            <td> {{emp.id}} </td>
+            <td> {{emp.emp_id}} </td>
             <td> {{emp.emp_name}} </td>
             <td> {{emp.emp_email}} </td>
             <td> {{emp.emp_role}} </td>
             <td>
-              <button class="btn btn-sm btn-warning me-2" (click)="updateRecordEdit(emp.id)">Edit</button>
-              <button class="btn btn-sm btn-danger" (click)="deleteEmp(emp.id)">Delete</button>
+              <button class="btn btn-sm btn-warning me-2" (click)="empUpdateEdit(emp.emp_id)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteEmp(emp.emp_id)">Delete</button>
             </td>
           </tr>
         </tbody>

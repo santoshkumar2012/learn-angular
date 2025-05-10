@@ -1,0 +1,23 @@
+<app-header></app-header>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns">{{ col }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let col of columns">{{ row[col] }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>
+  {{ isExpanded ? text : (text | slice:0:limit) }}<span *ngIf="!isExpanded && text.length > limit">...</span>
+  <a href="#" (click)="toggleShow(); $event.preventDefault()">
+    {{ isExpanded ? 'Show less' : 'Show more' }}
+  </a>
+</p>
+
+

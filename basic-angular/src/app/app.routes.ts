@@ -35,6 +35,8 @@ import { OfFromComponent } from './rxjs/observable/all/of-from/of-from.component
 import { ToarrayComponent } from './rxjs/observable/all/toarray/toarray.component';
 import { MapComponent } from './rxjs/observable/all/map/map.component';
 import { PluckComponent } from './rxjs/observable/all/pluck/pluck.component';
+import { CrudApiPractiseComponent } from './crud/crud-api-practise/crud-api-practise.component';
+import { CrudLocalstorageComponent } from './crud/crud-localstorage/crud-localstorage.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -71,5 +73,7 @@ export const routes: Routes = [
     {path: 'off-from', component:OfFromComponent, canActivate:[authGuard]},
     {path: 'toarray', component:ToarrayComponent, canActivate:[authGuard]},
     {path: 'map', component:MapComponent, canActivate:[authGuard]},
-    {path: 'pluck', component:PluckComponent, canActivate:[authGuard]}
+    {path: 'pluck', component:PluckComponent, canActivate:[authGuard]},
+    {path: 'crudapi-practise', component:CrudApiPractiseComponent, canActivate:[authGuard]},
+    {path: 'crud-localstorage', component:CrudLocalstorageComponent, canActivate:[authGuard]}
 ];
