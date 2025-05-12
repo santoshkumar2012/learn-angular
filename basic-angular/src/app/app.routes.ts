@@ -37,6 +37,7 @@ import { MapComponent } from './rxjs/observable/all/map/map.component';
 import { PluckComponent } from './rxjs/observable/all/pluck/pluck.component';
 import { CrudApiPractiseComponent } from './crud/crud-api-practise/crud-api-practise.component';
 import { CrudLocalstorageComponent } from './crud/crud-localstorage/crud-localstorage.component';
+import { MergemapComponent } from './rxjs/observable/all/mergemap/mergemap.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -75,5 +76,6 @@ export const routes: Routes = [
     {path: 'map', component:MapComponent, canActivate:[authGuard]},
     {path: 'pluck', component:PluckComponent, canActivate:[authGuard]},
     {path: 'crudapi-practise', component:CrudApiPractiseComponent, canActivate:[authGuard]},
-    {path: 'crud-localstorage', component:CrudLocalstorageComponent, canActivate:[authGuard]}
+    {path: 'crud-localstorage', component:CrudLocalstorageComponent, canActivate:[authGuard]},
+    {path: 'mergemap', component:MergemapComponent, canActivate:[authGuard]},
 ];

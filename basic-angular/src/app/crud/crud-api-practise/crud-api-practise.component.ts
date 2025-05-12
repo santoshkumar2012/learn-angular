@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CrudApiPractiseComponent {
 
-  user_form!: FormGroup
+   user_form!: FormGroup
   users: any
   user_details:any
   searchQuery: string = '';
@@ -86,7 +86,7 @@ export class CrudApiPractiseComponent {
  updatedUser(){
   this.http.put('users/'+this.user_details.id, this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
     this.getUser()
-    this.resetForm()
+    this.resetForm()	
     this.toastr.success("Updated User Details")
   })
  }

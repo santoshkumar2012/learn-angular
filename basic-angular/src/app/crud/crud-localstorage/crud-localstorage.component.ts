@@ -13,15 +13,15 @@ export class CrudLocalstorageComponent {
 
   emp_form!: FormGroup
   emp_details: any = []
-  updatedId: any
+  updateRecordId: any
 
   constructor( private fb: FormBuilder){}
 
   emp_fields = {
     emp_id    : [''],
     emp_name  : ['', Validators.required],
-    emp_email : ['', Validators.required, Validators.email],
-    emp_role  : ['', Validators.required]
+    emp_email : ['', Validators.required],
+    emp_role  : ['', Validators.required],
   }
 
   ngOnInit(){ 
@@ -38,7 +38,13 @@ export class CrudLocalstorageComponent {
 
   resetForm(){ this.initializeForm() }
 
-  saveEmpData(){ this.addEmp() }
+  saveEmpData(){ 
+    if(this.updateRecordId){
+      this.updateEmp()
+    } else {
+      this.addEmp()
+    }
+   }
 
   addEmp(){
     let emp_id = (this.emp_details.at(-1)?.id ?? 0) + 1
@@ -55,21 +61,25 @@ export class CrudLocalstorageComponent {
   }
 
   updateEmp(){
-    let found = this.emp_details.filter((empData: any) => empData.id == this.updatedId)
+    const found = this.emp_details.filter((empData: any) => empData.id == this.updateRecordId)
+
     if(found){
-      found[0].emp_name = this.emp_form.value.emp_name
-      found[0].emp_email = this.emp_form.value.emp_email
-      found[0].emp_role = this.emp_form.value.emp_role
+       found[0].emp_name = this.emp_form.value.emp_name;
+        found[0].emp_email = this.emp_form.value.emp_email;
+        found[0].emp_role = this.emp_form.value.emp_role;
     }
+
+     this.toSaveLocalStorage()
     this.resetForm()
   }
 
   updateEdit(emp_id: any){
-    this.updatedId = emp_id
-    let data = this.emp_details.filter((empData: any) => empData.id == emp_id )
-    if(data){
+    
+    this.updateRecordId = emp_id
+      let data = this.emp_details.filter((empData: any) => empData.id == emp_id)
       this.emp_form.patchValue(data[0])
-    }
+      console.log('Check--->', data);
+      
   }
 
 
