@@ -1,110 +1,112 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { HttpSharedService } from '../../http-shared.service';
-import { CommonModule } from '@angular/common';
+import { title } from 'process';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { response } from 'express';
+import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { response } from 'express';
 
 @Component({
   selector: 'app-crud-api-practise',
-  imports: [HeaderComponent, CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [HeaderComponent, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './crud-api-practise.component.html',
   styleUrl: './crud-api-practise.component.css'
 })
 export class CrudApiPractiseComponent {
 
-   user_form!: FormGroup
-  users: any
-  user_details:any
-  searchQuery: string = '';
+  productForm!: FormGroup
+  products: any
+  product_details: any
+  productQuery: string = '';
 
-  constructor(
+  constructor( 
     private http: HttpSharedService,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toaster: ToastrService
   ){}
 
-  user_fields = {
-    username : ['', Validators.required],
-    email    : ['', Validators.required],
-    phone    : ['', Validators.required]
+  ngOnInit(){
+    this.getProducts()
+    this.initailizeForm()
   }
 
-  ngOnInit(){ 
-    this.getUser()
-    this.initializeForm()
-   }
-
-  initializeForm(){
-    this.user_form = this.fb.group(this.user_fields)
+  product_fields = {
+    title   : ['', Validators.required],
+    brand   : ['', Validators.required],
+    category: ['', Validators.required]
   }
 
-  resetForm(){ this.initializeForm()}
-
- saveForm(){
-  this.createUser()
-  this.updatedUser()
-  this.resetForm()
- }
-
- setUser(user: any){
-  this.user_details = user
-  this.patchForm()
- }
-
- getUser(){
-  this.http.get('users').subscribe((response: any) => {
-    this.users = response.users
-  })
- }
-
- setPayLoad(form:any){
-  return{
-    username  : form.username,
-    email     : form.email,
-    phone     : form.phone
+  initailizeForm(){
+    this.productForm = this.fb.group(this.product_fields)
   }
- }
 
- createUser(){
-  this.http.post('users/add', this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
-    this.getUser()
+  resetForm(){ this.initailizeForm() }
+
+  saveProducts(){
+    this.createProduct()
+    this.updateProduct()
     this.resetForm()
-    this.toastr.success("Added User Details")
-  })
- }
+  }
 
- patchForm(){
-  this.user_form.patchValue({
-    username: this.user_details.username,
-    email   : this.user_details.email,
-    phone   : this.user_details.phone,
-  })
- }
+  setProduct(product: any){
+    this.product_details = product
+    this.pathForm()
+  }
 
- updatedUser(){
-  this.http.put('users/'+this.user_details.id, this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
-    this.getUser()
-    this.resetForm()	
-    this.toastr.success("Updated User Details")
-  })
- }
+  getProducts(){
+    this.http.get('products').subscribe((response: any) => {
+      this.products = response.products
+      console.log('Products List --->', this.products);
+    })
+  }
 
- deactiveUser(user: any){
-  this.http.delete('users/'+user.id).subscribe((response: any) => {
-    this.toastr.success("Deleted User Details")
-  })
- } 
+  setPayLoad(form: any){
+    return{
+      title   : form.title,
+      brand   : form.brand,
+      category: form.category
+    }
+  }
 
- searchUser() {
-  const query = this.searchQuery.trim();
+  createProduct(){
+    this.http.post('products/add', this.setPayLoad(this.productForm.value)).subscribe((response: any) => {
+      this.getProducts()
+      this.toaster.success("Prdoct Added Successfully")
+      this.resetForm()
+     })
+  }
+
+  pathForm(){
+    this.productForm.patchValue({
+      title   : this.product_details.title,
+      brand   : this.product_details.brand,
+      category: this.product_details.category
+    })
+  }
+
+  updateProduct(){
+    this.http.put('products/'+this.product_details.id, this.setPayLoad(this.productForm.value)).subscribe((response: any) => {
+      this.getProducts()
+      this.toaster.success("Product Updated Successfully")
+    })
+  }
+
+  deleteProduct(product: any){
+    this.http.delete('products/'+product.id).subscribe((response: any) => {
+      console.log('Check--->', product.id);
+      this.toaster.success("Product Delete Successfully")
+    })
+  }
+
+   searchProduct() {
+  const query = this.productQuery.trim();
   if (query) {
-    this.http.get(`users/search?q=${query}`).subscribe((response: any) => {
-        this.users = response.users;
+    this.http.get(`products/search?q=phone`).subscribe((response: any) => {
+        this.products = response.products;
       });
   } else {
-    this.getUser(); // show full list if search box is empty
+    this.getProducts(); // show full list if search box is empty
   }
 }
 

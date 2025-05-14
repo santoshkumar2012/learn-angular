@@ -1,66 +1,59 @@
 <app-header></app-header>
 
-<div class="container">
-    <h3 class="mt-5"> User Details </h3>
-    
-    <div class="col-lg-12 m-auto shadow p-4">
+    <div class="container mt-5">
 
-        <div class="mb-4 p-3 shadow">
-            <form [formGroup]="user_form" (ngSubmit)="saveForm()">
-            <div class="row">
-                <div class="col-lg-3"> 
-                    <input type="text" class="form-control" formControlName="username" placeholder="Username"> 
-                    <span class="error" *ngIf="user_form.get('username')?.touched && user_form.get('username')?.hasError('required')"> Username is Invalid </span>
-                </div>
-                <div class="col-lg-3">  
-                    <input type="text" class="form-control" formControlName="email" placeholder="Email Address"> 
-                    <span class="error" *ngIf="user_form.get('email')?.touched && user_form.get('email')?.hasError('required')"> Email Address is Invalid </span>
-                </div>
-                <div class="col-lg-3">  
-                    <input type="text" class="form-control" formControlName="phone" placeholder="Phone Number"> 
-                    <span class="error" *ngIf="user_form.get('phone')?.touched && user_form.get('phone')?.hasError('required')"> Phone Number is Invalid </span>
-                </div>
-                <div class="col-lg-3"> <button type="submit" class="btn btn-primary"> Submit </button></div>
+    <form class="shadow p-3" [formGroup]="productForm" (ngSubmit)="saveProducts()">
+        <div class="row">
+            <div class="col-lg-3"> 
+                <input type="text" class="form-control" placeholder="Product Title" formControlName="title">
+                <span class="error text-danger" *ngIf="productForm.get('title')?.touched && productForm.get('title')?.hasError('required')"> Title is invalid </span>
             </div>
-        </form>
+            <div class="col-lg-3"> 
+                <input type="text" class="form-control" placeholder="Product Brands" formControlName="brand">
+                <span class="error text-danger" *ngIf="productForm.get('brand')?.touched && productForm.get('brand')?.hasError('required')"> Brand is invalid </span>
+            </div>
+            <div class="col-lg-3"> 
+                <input type="text" class="form-control" placeholder="Product Category" formControlName="category">
+                <span class="error text-danger" *ngIf="productForm.get('category')?.touched && productForm.get('category')?.hasError('required')"> Category is invalid </span>
+            </div>
+            <div class="col-lg-3"> 
+                <button type="submit" class="btn btn-success"> Add Product </button>
+            </div>
         </div>
+    </form>
 
-        <div class="col-lg-12"> 
+     <div class="col-lg-12 mt-5" style="background-color: rgb(209, 209, 209);"> 
             <div class="input-group mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Search users..."
-                  [(ngModel)]="searchQuery"
-                  (input)="searchUser()"  
+                  placeholder="Search Product..."
+                  [(ngModel)]="productQuery"
+                  (input)="searchProduct()"  
                 />
-                <button class="btn btn-primary" type="button" (click)="searchUser()">Search</button>
+                <button class="btn btn-primary" type="button" (click)="searchProduct()">Search</button>
               </div>
         </div> 
 
-
-       <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th> Username </th>
-                    <th> Email Address </th>
-                    <th> Phone Number </th>
-                    <th> Action </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of users">
-                    <td> {{user.username}} </td>
-                    <td> {{user.email}} </td>
-                    <td> {{user.phone}} </td>
-                    <td> 
-                        <button type="button" class="btn btn-warning me-2" (click)="setUser(user)"> Edit </button>
-                        <button type="button" class="btn btn-danger" (click)="deactiveUser(user)"> Delete </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        
+    <table class="table table-border mt-5">
+    <thead>
+        <th> Product Id </th>
+        <th> Product Title </th>
+        <th> Product Brands </th>
+        <th> Product Category </th>
+        <th> Action </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td> {{product.id}} </td>
+            <td> {{product.title}} </td>
+            <td> {{product.brand}} </td>
+            <td> {{product.category}} </td>
+            <td>
+                <button type="button" class="btn btn-info me-2" (click)="setProduct(product)"> Edit </button>
+                <button type="button" class="btn btn-danger" (click)="deleteProduct(product)"> Delete </button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
     </div>
-</div>
