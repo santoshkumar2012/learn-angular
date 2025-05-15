@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+    
+   <input
+    type="text"
+    [formControl]="searchControl"
+    placeholder="Search..."
+    class="form-control"
+  />
+
+    <table class="table table-bordered mt-5" *ngIf="products.length">
+        <thead>
+            <tr>
+                <td> Product title </td>
+                <td> Product Brand </td>
+                <td> Product Category </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td> {{product.title}} </td>
+                <td> {{product.brand}} </td>
+                <td> {{product.category}} </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

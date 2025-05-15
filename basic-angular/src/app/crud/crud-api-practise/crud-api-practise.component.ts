@@ -1,63 +1,54 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
-import { HttpSharedService } from '../../http-shared.service';
-import { title } from 'process';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpSharedService } from '../../http-shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { title } from 'process';
 import { response } from 'express';
 
 @Component({
   selector: 'app-crud-api-practise',
-  imports: [HeaderComponent, ReactiveFormsModule, CommonModule, FormsModule],
+  imports: [HeaderComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './crud-api-practise.component.html',
   styleUrl: './crud-api-practise.component.css'
 })
 export class CrudApiPractiseComponent {
 
-  productForm!: FormGroup
+  product_form!:FormGroup
   products: any
   product_details: any
   productQuery: string = '';
-
+  
   constructor( 
     private http: HttpSharedService,
     private fb: FormBuilder,
     private toaster: ToastrService
   ){}
 
-  ngOnInit(){
-    this.getProducts()
-    this.initailizeForm()
-  }
-
-  product_fields = {
+  product_field = {
     title   : ['', Validators.required],
     brand   : ['', Validators.required],
-    category: ['', Validators.required]
+    category: ['', Validators.required],
+    price   : ['', Validators.required]
   }
 
-  initailizeForm(){
-    this.productForm = this.fb.group(this.product_fields)
+  ngOnInit(){
+    this.getProducts()
+    this.initializeForm()
   }
 
-  resetForm(){ this.initailizeForm() }
-
-  saveProducts(){
-    this.createProduct()
-    this.updateProduct()
-    this.resetForm()
+  initializeForm(){
+    this.product_form = this.fb.group(this.product_field)
   }
 
-  setProduct(product: any){
-    this.product_details = product
-    this.pathForm()
+  saveProduct(){
+    this.addProducts()
   }
 
   getProducts(){
     this.http.get('products').subscribe((response: any) => {
       this.products = response.products
-      console.log('Products List --->', this.products);
     })
   }
 
@@ -65,41 +56,48 @@ export class CrudApiPractiseComponent {
     return{
       title   : form.title,
       brand   : form.brand,
-      category: form.category
+      category: form.category,
+      price   : form.price
     }
   }
 
-  createProduct(){
-    this.http.post('products/add', this.setPayLoad(this.productForm.value)).subscribe((response: any) => {
+  addProducts(){
+    this.http.post('products/add', this.setPayLoad(this.product_form.value)).subscribe((response: any) => {
+      console.log('Check--->', response);
       this.getProducts()
-      this.toaster.success("Prdoct Added Successfully")
-      this.resetForm()
-     })
+      this.toaster.success("Product added Successfully")
+    })
   }
 
-  pathForm(){
-    this.productForm.patchValue({
+  patchForm(){
+    this.product_form.patchValue({
       title   : this.product_details.title,
       brand   : this.product_details.brand,
-      category: this.product_details.category
+      category: this.product_details.category,
+      price   : this.product_details.price,
     })
   }
 
-  updateProduct(){
-    this.http.put('products/'+this.product_details.id, this.setPayLoad(this.productForm.value)).subscribe((response: any) => {
+  updateProductEdit(){
+    this.http.put('products/'+this.product_details.id, this.setPayLoad(this.product_form.value)).subscribe((response: any) => {
       this.getProducts()
-      this.toaster.success("Product Updated Successfully")
+      this.toaster.success("Product updated successfully")
     })
+  }
+
+  setProduct(product: any){
+    this.product_details = product
+    this.patchForm()
   }
 
   deleteProduct(product: any){
     this.http.delete('products/'+product.id).subscribe((response: any) => {
-      console.log('Check--->', product.id);
-      this.toaster.success("Product Delete Successfully")
+      console.log('Check--->', response);
+      this.toaster.success("Product Deleted Successfully")
     })
   }
 
-   searchProduct() {
+  searchProduct() {
   const query = this.productQuery.trim();
   if (query) {
     this.http.get(`products/search?q=phone`).subscribe((response: any) => {

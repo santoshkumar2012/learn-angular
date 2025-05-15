@@ -19,7 +19,7 @@ export class MergemapComponent {
  
   ngOnInit(){
 
-     //Example 01
+     //Example 01 Map
 
     const source = from(['Tech', 'Comedy', 'News']);
 

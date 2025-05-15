@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-crud-localstorage',
   imports: [HeaderComponent, ReactiveFormsModule, CommonModule],
