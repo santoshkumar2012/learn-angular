@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
+import { HttpSharedService } from '../../http-shared.service';
+import { response } from 'express';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpSharedService } from '../../http-shared.service';
 import { ToastrService } from 'ngx-toastr';
-import { title } from 'process';
-import { response } from 'express';
 
 @Component({
   selector: 'app-crud-api-practise',
@@ -15,97 +14,97 @@ import { response } from 'express';
 })
 export class CrudApiPractiseComponent {
 
-  product_form!:FormGroup
-  products: any
-  product_details: any
-  productQuery: string = '';
-  
-  constructor( 
+  users: any
+  user_form!: FormGroup
+  user_details: any
+
+  constructor(
     private http: HttpSharedService,
     private fb: FormBuilder,
     private toaster: ToastrService
   ){}
 
-  product_field = {
-    title   : ['', Validators.required],
-    brand   : ['', Validators.required],
-    category: ['', Validators.required],
-    price   : ['', Validators.required]
+  user_field = {
+    firstName : ['', Validators.required],
+    lastName  : ['', Validators.required],
+    email     : ['', Validators.required],
+    gender    : ['', Validators.required],
+    address   : ['', Validators.required],
+    department: ['', Validators.required]
   }
 
   ngOnInit(){
-    this.getProducts()
-    this.initializeForm()
+    this.getUser()
+    this.intializeForm()
   }
 
-  initializeForm(){
-    this.product_form = this.fb.group(this.product_field)
+  intializeForm(){
+    this.user_form = this.fb.group(this.user_field)
   }
 
-  saveProduct(){
-    this.addProducts()
+  resetForm(){
+    this.intializeForm()
   }
 
-  getProducts(){
-    this.http.get('products').subscribe((response: any) => {
-      this.products = response.products
+  saveUser(){
+    this.createUser()
+    this.updateUser()
+  }
+
+  getUser(){
+    this.http.get('users').subscribe((response: any) => {
+      this.users = response.users
     })
   }
 
   setPayLoad(form: any){
-    return{
-      title   : form.title,
-      brand   : form.brand,
-      category: form.category,
-      price   : form.price
+    return {
+      "firstName" : form.firstName,
+      "lastName"  : form.lastName,
+      "email"     : form.email,
+      "gender"    : form.gender,
+      "address"   : form.address,
+      "department": form.department
     }
   }
 
-  addProducts(){
-    this.http.post('products/add', this.setPayLoad(this.product_form.value)).subscribe((response: any) => {
-      console.log('Check--->', response);
-      this.getProducts()
-      this.toaster.success("Product added Successfully")
+  createUser(){
+    this.http.post('users/add', this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
+      this.getUser()
+      this.resetForm()
+      this.toaster.success("User Added Successfully")
     })
   }
 
   patchForm(){
-    this.product_form.patchValue({
-      title   : this.product_details.title,
-      brand   : this.product_details.brand,
-      category: this.product_details.category,
-      price   : this.product_details.price,
+    this.user_form.patchValue({
+      firstName : this.user_details.firstName,
+      lastName  : this.user_details.lastName,
+      email     : this.user_details.email,
+      gender    : this.user_details.gender,
+      address   : this.user_details.address?.address,
+      department: this.user_details.company?.department
     })
   }
 
-  updateProductEdit(){
-    this.http.put('products/'+this.product_details.id, this.setPayLoad(this.product_form.value)).subscribe((response: any) => {
-      this.getProducts()
-      this.toaster.success("Product updated successfully")
+  updateUser(){
+    this.http.put('users/'+this.user_details.id, this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
+      this.getUser()
+      this.resetForm()
+      this.toaster.success("User Updated Successfully")
     })
   }
 
-  setProduct(product: any){
-    this.product_details = product
+  setUser(user_id: any){
+    this.user_details = user_id
     this.patchForm()
   }
 
-  deleteProduct(product: any){
-    this.http.delete('products/'+product.id).subscribe((response: any) => {
-      console.log('Check--->', response);
-      this.toaster.success("Product Deleted Successfully")
+  deleteUser(user_id: any){
+    this.http.delete('users/'+user_id.id).subscribe((response: any) => {
+      this.toaster.success("User Deleted Successfully")
     })
   }
 
-  searchProduct() {
-  const query = this.productQuery.trim();
-  if (query) {
-    this.http.get(`products/search?q=phone`).subscribe((response: any) => {
-        this.products = response.products;
-      });
-  } else {
-    this.getProducts(); // show full list if search box is empty
-  }
-}
 
 }
