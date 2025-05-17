@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+<h2> Employee Details </h2>    
+<input type="text" class="form-control" [(ngModel)]="searchText" (input)="employeeDetails()" placeholder="Search">
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <td> Name </td>
+            <td> Designation </td>
+            <td> Salary </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of filterEmployee">
+            <td> {{employee.name}} </td>
+            <td> {{employee.designation}}  </td>
+            <td> {{employee.salary}}  </td>
+        </tr>
+    </tbody>
+</table>
+</div>
