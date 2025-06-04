@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CrudApiPractiseComponent {
 
   users: any
-  user_form!: FormGroup
+  user_form: any
   user_details: any
 
   constructor(
@@ -34,16 +34,16 @@ export class CrudApiPractiseComponent {
   }
 
   ngOnInit(){
+    this.intializedForm()
     this.getUser()
-    this.intializeForm()
   }
 
-  intializeForm(){
+  intializedForm(){
     this.user_form = this.fb.group(this.user_field)
   }
 
   resetForm(){
-    this.intializeForm()
+    this.intializedForm()
   }
 
   saveUser(){
@@ -58,13 +58,13 @@ export class CrudApiPractiseComponent {
   }
 
   setPayLoad(form: any){
-    return {
-      "firstName" : form.firstName,
-      "lastName"  : form.lastName,
-      "email"     : form.email,
-      "gender"    : form.gender,
-      "address"   : form.address,
-      "department": form.department
+    return{
+      firstName : form.firstName,
+      lastName  : form.lastName,
+      email     : form.email,
+      gender    : form.gender,
+      address   : form.address,
+      department: form.department
     }
   }
 
@@ -72,7 +72,7 @@ export class CrudApiPractiseComponent {
     this.http.post('users/add', this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
       this.getUser()
       this.resetForm()
-      this.toaster.success("User Added Successfully")
+      this.toaster.success("User is created")
     })
   }
 
@@ -89,22 +89,19 @@ export class CrudApiPractiseComponent {
 
   updateUser(){
     this.http.put('users/'+this.user_details.id, this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
-      this.getUser()
       this.resetForm()
-      this.toaster.success("User Updated Successfully")
+      this.toaster.success("User is updated")
     })
   }
 
-  setUser(user_id: any){
-    this.user_details = user_id
+  setUser(user: any){
+    this.user_details = user
     this.patchForm()
   }
 
-  deleteUser(user_id: any){
-    this.http.delete('users/'+user_id.id).subscribe((response: any) => {
-      this.toaster.success("User Deleted Successfully")
+  deActiveUser(user: any){
+    this.http.delete('users/'+user.id).subscribe((response: any) => {
+      this.toaster.success("User is deleted")
     })
   }
-
-
 }

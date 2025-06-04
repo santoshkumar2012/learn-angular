@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { HttpSharedService } from '../../http-shared.service';
 import { ToastrService } from 'ngx-toastr';
-import { response } from 'express';
-import { subscribe } from 'diagnostics_channel';
+
 
 @Component({
   selector: 'app-crud-api',
@@ -20,7 +19,6 @@ export class CrudApiComponent {
   user_form!: FormGroup
 
   constructor(private fb: FormBuilder, private http: HttpSharedService, private toastr: ToastrService){}
-
     user_field = {
     username  : ['', Validators.required],
     firstName : ['', Validators.required],

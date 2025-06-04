@@ -17,6 +17,7 @@ export class LoginComponent {
 
   loginForm!: FormGroup
   loading: boolean = false
+  error: string = '';
 
 constructor(
   private fb: FormBuilder,
@@ -49,11 +50,11 @@ pathFakerUser(){
     this.loginForm.patchValue(
       {"username": "emilys", "password": "emilyspass"}
     )
-  })
-  // this.loginForm.setValue({
-  //   email: 'emilys',
-  //   password: 'emilyspass'
-  // });
+  }, 
+  (error: any) => {
+      console.log("error", error)
+      this.error = error.error.message;
+    })
 }
 
 
@@ -66,7 +67,13 @@ login() {
     }  else {
       this.toastr.error("Login failed. No access token received.");
     }
-    })
+    },
+    // this.error: (err: any) => {
+    //   console.error('Login error:', err);
+    //   const message = err.error?.message || 'Login failed. Please try again.';
+    //   this.toastr.error(message);
+    // }
+  )
 }
 
 }

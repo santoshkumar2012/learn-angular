@@ -1,31 +1,33 @@
 <app-header></app-header>
 
 <div class="container mt-5">
-  <form class="p-4 shadow" [formGroup]="emp_form" (ngSubmit)="empDataSave()">
+  <form class="p-4 shadow" [formGroup]="emp_form" (ngSubmit)="saveForm()">
     <div class="row">
       <div class="col-lg-3"> 
         <input type="text" class="form-control" placeholder="Employee Name" formControlName="emp_name">
-        <span class="text-danger" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> Employee Name is invalid </span>
+        <span class="text-danger" [ngClass]="{'is-invalid': formSubmitted && emp_form.get('emp_name')?.invalid}"> 
+          <span *ngIf="formSubmitted && emp_form.get('emp_name')?.hasError('required')"> Employee Name is invalid </span> </span>
       </div>
       <div class="col-lg-3"> 
         <input type="text" class="form-control" placeholder="Employee Email" formControlName="emp_email">
-        <span class="text-danger" *ngIf="emp_form.get('emp_email')?.touched && emp_form.get('emp_email')?.hasError('required')"> Employee Email is invalid </span>
+        <span class="text-danger" [ngClass]="{'is-invalid': formSubmitted && emp_form.get('emp_email')?.invalid}"> 
+          <span *ngIf="formSubmitted && emp_form.get('emp_email')?.hasError('required')">  Employee Email is invalid 
+            </span>
+          </span>
       </div>
       <div class="col-lg-3"> 
         <input type="text" class="form-control" placeholder="Employee Role" formControlName="emp_role">
-        <span class="text-danger" *ngIf="emp_form.get('emp_role')?.touched && emp_form.get('emp_role')?.hasError('required')"> Employee Role is invalid </span>
+        <span class="text-danger" [ngClass]="{'is-invalid': formSubmitted && emp_form.get('emp_role')?.invalid}"> 
+           <span *ngIf="formSubmitted && emp_form.get('emp_role')?.hasError('required')"> Employee Role is invalid </span> </span>
       </div>
       <div class="col-lg-3"> 
-        <button type="submit" class="btn btn-success" [disabled]="emp_form.invalid"> 
-        {{operation}} Employee 
-        </button>
+        <button type="submit" class="btn btn-success"> Add Employee </button>
       </div>
     </div>
   </form>
 
-
   <div class="mt-5">
-    <table class="table table-bordered" *ngIf="emp_details.length">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <td> Employee Name </td>
@@ -40,7 +42,7 @@
           <td> {{emp.emp_email}} </td>
           <td> {{emp.emp_role}} </td>
           <td> 
-            <button class="btn btn-info me-2" (click)="empUpdateEdit(emp.id)"> Edit </button>
+            <button class="btn btn-info me-2" (click)="employeeSetEdit(emp.id)"> Edit </button>
             <button class="btn btn-danger" (click)="deleteEmp(emp.id)"> Delete </button>
           </td>
         </tr>

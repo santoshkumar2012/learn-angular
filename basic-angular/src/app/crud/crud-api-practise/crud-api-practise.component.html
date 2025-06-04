@@ -32,7 +32,7 @@
                 <button type="submit" class="btn btn-success"> Submit </button>
             </div>
         </div>
-    </form>
+    </form> 
 
     <table class="table table-bordered mt-5">
         <thead>
@@ -48,17 +48,17 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of users">
-                <td> {{user.firstName}} </td>
-                <td> {{user.lastName}} </td>
-                <td> {{user.email}} </td>
-                <td> {{user.gender | titlecase}} </td>
-                <td> {{user.address?.address}} </td>
-                <td> {{user.company?.department}} </td>
+                <td>  {{user.firstName}} </td>
+                <td>  {{user.lastName}} </td>
+                <td>  {{user.email}} </td>
+                <td>  {{user.gender}} </td>
+                <td>  {{user?.address.address}} </td>
+                <td>  {{user.company?.department}} </td>
                 <td> 
-                    <button class="btn btn-info me-2" (click)="setUser(user)"> Edit </button> 
-                    <button class="btn btn-danger" (click)="deleteUser(user)"> Delete </button> 
-                </td>
+                    <button class="btn btn-info" (click)="setUser(user)"> Edit </button>
+                    <button class="btn btn-danger" (click)="deActiveUser(user)"> Delete </button>
+                </td> 
             </tr>
         </tbody>
-    </table>
+    </table> 
 </div>

@@ -6,11 +6,12 @@ import { ScrollToTopDirective } from './scroll-to-top.directive';
 import { DisableCopyDirective } from './disable-copy.directive';
 import { HeaderComponent } from "../header/header.component";
 import { HighlightDirective } from './highlight.directive';
+import { HighlightCountryDirective } from './highlight-country.directive';
 
 @Component({
   selector: 'app-directives',
   standalone: true,
-  imports: [CommonModule, CustomDirectiveDirective, ChangeColorDirective, ScrollToTopDirective, HeaderComponent, HighlightDirective],
+  imports: [CommonModule, CustomDirectiveDirective, ChangeColorDirective, ScrollToTopDirective, HeaderComponent, HighlightDirective, HighlightCountryDirective],
   templateUrl: './directives.component.html',
   styleUrl: './directives.component.css'
 })

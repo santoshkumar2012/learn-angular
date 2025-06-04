@@ -39,6 +39,9 @@ import { CrudApiPractiseComponent } from './crud/crud-api-practise/crud-api-prac
 import { CrudLocalstorageComponent } from './crud/crud-localstorage/crud-localstorage.component';
 import { MergemapComponent } from './rxjs/observable/all/mergemap/mergemap.component';
 import { SwitchmapComponent } from './rxjs/observable/all/switchmap/switchmap.component';
+import { StaticdataComponent } from './crud/staticdata/staticdata.component';
+import { StaticPractiseComponent } from './crud/static-practise/static-practise.component';
+import { SidebarmenuComponent } from './sidebarmenu/sidebarmenu.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -79,5 +82,8 @@ export const routes: Routes = [
     {path: 'crudapi-practise', component:CrudApiPractiseComponent, canActivate:[authGuard]},
     {path: 'crud-localstorage', component:CrudLocalstorageComponent, canActivate:[authGuard]},
     {path: 'mergemap', component:MergemapComponent, canActivate:[authGuard]},
-    {path: 'switchmap', component:SwitchmapComponent, canActivate:[authGuard]}
+    {path: 'switchmap', component:SwitchmapComponent, canActivate:[authGuard]},
+    {path: 'staticData', component:StaticdataComponent, canActivate:[authGuard]},
+    {path: 'static-practise', component:StaticPractiseComponent, canActivate:[authGuard]},
+    {path: 'sidebar-menu', component:SidebarmenuComponent, canActivate:[authGuard]}
 ];
