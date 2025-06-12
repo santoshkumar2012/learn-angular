@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<div class="container mt-5"> 
+    <form class="shadow-lg rounded mb-5 p-3" [formGroup]="product_form" (ngSubmit)="saveProduct()">
+        <div class="row">
+            <div class="col-lg-2"> 
+                <input type="text" placeholder="Product Title" class="form-control" formControlName="title">
+                <span class="text-danger" *ngIf="product_form.get('title')?.touched && product_form.get('title')?.hasError('required')"> Product Title is invalid </span>
+            </div>
+            <div class="col-lg-2"> 
+                <input type="text" placeholder="Product Category" class="form-control" formControlName="category">
+                <span class="text-danger" *ngIf="product_form.get('category')?.touched && product_form.get('category')?.hasError('required')"> Category is invalid </span>
+            </div>
+            <div class="col-lg-3"> 
+                <input type="text" placeholder="Brand" class="form-control" formControlName="brand">
+                <span class="text-danger" *ngIf="product_form.get('brand')?.touched && product_form.get('brand')?.hasError('required')"> Brand is invalid </span>
+            </div>
+            <div class="col-lg-3"> 
+                <input type="text" placeholder="Description" class="form-control" formControlName="description">
+                <span class="text-danger" *ngIf="product_form.get('description')?.touched && product_form.get('description')?.hasError('required')"> Description is invalid </span>
+            </div>
+            <div class="col-lg-2"> 
+                <button type="submit" class="btn btn-success"> Add Product </button>
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> Product Title </th>
+                <th> Category </th>
+                <th> Brand </th>
+                <th> Description </th>
+                <th> Status </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td> {{product.title}} </td>
+                <td> {{product.category}} </td>
+                <td> {{product.brand}} </td>
+                <td> {{product.description}} </td>
+                <td> 
+                    <div class="d-flex"> 
+                    <button class="btn btn-info me-2" (click)="setProduct(product)"> Edit </button>
+                    <button class="btn btn-danger" (click)="deleteProduct(product)"> Delete </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

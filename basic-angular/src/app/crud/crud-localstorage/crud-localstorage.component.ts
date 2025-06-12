@@ -14,97 +14,92 @@ export class CrudLocalstorageComponent {
 
   emp_form!: FormGroup
   emp_details: any = []
-  empupdateRecordId: any
-  formSubmitted = false;
+  empUpdateRecored: any
 
   constructor(
     private fb: FormBuilder,
     private toaster: ToastrService
-  ) { }
+  ){}
 
-  emp_field = {
-    emp_id: [''],
-    emp_name: ['', Validators.required],
-    emp_email: ['', Validators.required],
-    emp_role: ['', Validators.required]
+  emp_fields = {
+    emp_id    : [''],
+    emp_name  : ['', Validators.required],
+    emp_email : ['', Validators.required],
+    emp_role  : ['', Validators.required]
   }
 
-  ngOnInit() {
-    this.intializeForm()
-    let empdata = localStorage.getItem('employeeData')
-    if (empdata) {
+  ngOnInit(){
+    this.initializeForm()
+    let empdata = localStorage.getItem('employee_data')
+    if(empdata){
       this.emp_details = JSON.parse(empdata)
     }
   }
 
-  intializeForm() {
-    this.emp_form = this.fb.group(this.emp_field)
+  initializeForm(){
+    this.emp_form = this.fb.group(this.emp_fields)
   }
 
-  resetForm() {
-    this.intializeForm()
+  resetForm(){
+    this.initializeForm()
+    this.empUpdateRecored = null;
   }
 
-  saveForm() {
-
-    this.formSubmitted = true;
-    if (this.emp_form.invalid) {
-      this.emp_form.markAllAsTouched();
-      const firstInvalidControl = document.querySelector('.ng-invalid');
-      if (firstInvalidControl) {
-        (firstInvalidControl as HTMLElement).focus();
-      }
-      return;
-    }
-
-    this.formSubmitted = false;
-
-    if (this.empupdateRecordId) {
-      this.upateEmployee()
+  empSaveData(){
+    if(this.empUpdateRecored){
+      this.updateEmp()
     } else {
       this.getEmp()
     }
   }
 
-  getEmp() {
+  getEmp(){
     let emp_id = (this.emp_details.at(-1)?.id ?? 0) + 1
+
+    if (this.emp_form.valid) {
     this.emp_details.push({
-      "id": emp_id,
-      "emp_name": this.emp_form.value.emp_name,
-      "emp_email": this.emp_form.value.emp_email,
-      "emp_role": this.emp_form.value.emp_role
+      "id"        : emp_id,
+      "emp_name"  : this.emp_form.value.emp_name,
+      "emp_email" : this.emp_form.value.emp_email,
+      "emp_role"  : this.emp_form.value.emp_role
     })
-    this.resetForm()
-    this.toLocalSaveData()
-    this.toaster.success("Employee Data is created")
+    this.resetForm();
+    this.toLocalSaveData();
+    this.toaster.success("Employee data has been added successfully!")
+  } else {
+    this.toaster.error("Form is invalid. Please correct the errors.")
   }
 
-  upateEmployee() {
-    let found = this.emp_details.filter((emp_Data: any) => emp_Data.id == this.empupdateRecordId)
-    if (found) {
+  }
+
+
+  updateEmp(){
+    let found = this.emp_details.filter((emp_data: any) => emp_data.id == this.empUpdateRecored)
+
+    if(found){
       found[0].emp_name = this.emp_form.value.emp_name
       found[0].emp_email = this.emp_form.value.emp_email
       found[0].emp_role = this.emp_form.value.emp_role
     }
     this.resetForm()
     this.toLocalSaveData()
-    this.toaster.success("Employee is Updated")
+    this.toaster.success("Employee data has been updated")
   }
 
-  employeeSetEdit(emp_id: any) {
-    this.empupdateRecordId = emp_id
-    let data = this.emp_details.filter((emp_Data: any) => emp_Data.id == emp_id)
+  empEditUpdate(emp_id: any){
+    this.empUpdateRecored = emp_id
+    let data = this.emp_details.filter((emp_data:any) => emp_data.id == emp_id)
     this.emp_form.patchValue(data[0])
   }
 
-  deleteEmp(emp_id: any) {
-    this.emp_details = this.emp_details.filter((emp_Data: any) => emp_Data.id != emp_id)
+  deleteEmp(emp_id: any){
+    this.emp_details = this.emp_details.filter((emp_data: any) => emp_data.id != emp_id)
     this.toLocalSaveData()
-    this.toaster.success("Employee is deleted")
+    this.toaster.success("Employee data has been deleted")
   }
 
-  toLocalSaveData() {
-    localStorage.setItem('employeeData', JSON.stringify(this.emp_details))
+  toLocalSaveData(){
+    localStorage.setItem('employee_data', JSON.stringify(this.emp_details))
   }
 
 }

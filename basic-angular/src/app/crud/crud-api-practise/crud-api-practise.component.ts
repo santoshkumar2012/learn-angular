@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { HttpSharedService } from '../../http-shared.service';
-import { response } from 'express';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
@@ -15,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CrudApiPractiseComponent {
 
   users: any
-  user_form: any
+  user_form!: FormGroup
   user_details: any
 
   constructor(

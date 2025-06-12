@@ -42,6 +42,11 @@ import { SwitchmapComponent } from './rxjs/observable/all/switchmap/switchmap.co
 import { StaticdataComponent } from './crud/staticdata/staticdata.component';
 import { StaticPractiseComponent } from './crud/static-practise/static-practise.component';
 import { SidebarmenuComponent } from './sidebarmenu/sidebarmenu.component';
+import { CrudApiDbCheckComponent } from './crud/crud-api-db-check/crud-api-db-check.component';
+import { CrudFormDynamicComponent } from './crud/crud-form-dynamic/crud-form-dynamic.component';
+import { CrudFormDynamicLocalhostComponent } from './crud/crud-form-dynamic-localhost/crud-form-dynamic-localhost.component';
+import { ParentsComponent } from './transfer/parents/parents.component';
+import { ChildsComponent } from './transfer/childs/childs.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -85,5 +90,10 @@ export const routes: Routes = [
     {path: 'switchmap', component:SwitchmapComponent, canActivate:[authGuard]},
     {path: 'staticData', component:StaticdataComponent, canActivate:[authGuard]},
     {path: 'static-practise', component:StaticPractiseComponent, canActivate:[authGuard]},
-    {path: 'sidebar-menu', component:SidebarmenuComponent, canActivate:[authGuard]}
+    {path: 'sidebar-menu', component:SidebarmenuComponent, canActivate:[authGuard]},
+    {path: 'crud-db', component:CrudApiDbCheckComponent, canActivate:[authGuard]},
+    {path: 'crud-form-dynamic', component:CrudFormDynamicComponent, canActivate:[authGuard]},
+    {path: 'crud-form-dynamic-localhost', component:CrudFormDynamicLocalhostComponent, canActivate:[authGuard]},
+    {path: 'parents', component:ParentsComponent},
+    {path: 'childs', component:ChildsComponent}
 ];

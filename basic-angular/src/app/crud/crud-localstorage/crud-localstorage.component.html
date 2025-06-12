@@ -1,53 +1,48 @@
 <app-header></app-header>
 
-<div class="container mt-5">
-  <form class="p-4 shadow" [formGroup]="emp_form" (ngSubmit)="saveForm()">
+<div class="container">
+  <form class="mt-5 shadow-lg p-3 rounded" [formGroup]="emp_form" (ngSubmit)="empSaveData()">
     <div class="row">
-      <div class="col-lg-3"> 
-        <input type="text" class="form-control" placeholder="Employee Name" formControlName="emp_name">
-        <span class="text-danger" [ngClass]="{'is-invalid': formSubmitted && emp_form.get('emp_name')?.invalid}"> 
-          <span *ngIf="formSubmitted && emp_form.get('emp_name')?.hasError('required')"> Employee Name is invalid </span> </span>
+      <div class="col-lg-4"> 
+        <input type="text" placeholder="Employee Name" class="form-control" formControlName="emp_name">  
+        <span class="text-danger" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> 
+          Employee name is invalid </span>
       </div>
-      <div class="col-lg-3"> 
-        <input type="text" class="form-control" placeholder="Employee Email" formControlName="emp_email">
-        <span class="text-danger" [ngClass]="{'is-invalid': formSubmitted && emp_form.get('emp_email')?.invalid}"> 
-          <span *ngIf="formSubmitted && emp_form.get('emp_email')?.hasError('required')">  Employee Email is invalid 
-            </span>
-          </span>
-      </div>
-      <div class="col-lg-3"> 
-        <input type="text" class="form-control" placeholder="Employee Role" formControlName="emp_role">
-        <span class="text-danger" [ngClass]="{'is-invalid': formSubmitted && emp_form.get('emp_role')?.invalid}"> 
-           <span *ngIf="formSubmitted && emp_form.get('emp_role')?.hasError('required')"> Employee Role is invalid </span> </span>
-      </div>
-      <div class="col-lg-3"> 
-        <button type="submit" class="btn btn-success"> Add Employee </button>
+      <div class="col-lg-3"> <input type="text" placeholder="Employee Email" class="form-control" formControlName="emp_email"> 
+      <span class="text-danger" *ngIf="emp_form.get('emp_email')?.touched && emp_form.get('emp_email')?.hasError('required')"> 
+        Employee email is invalid </span>
+    </div>
+      <div class="col-lg-3"> <input type="text" placeholder="Employee Role" class="form-control" formControlName="emp_role"> 
+      <span class="text-danger" *ngIf="emp_form.get('emp_role')?.touched && emp_form.get('emp_role')?.hasError('required')"> 
+        Employee role is invalid </span>
+    </div>
+      <div class="col-lg-2 text-center"> 
+        <button type="submit" class="btn btn-success"> Submit </button> 
       </div>
     </div>
   </form>
 
-  <div class="mt-5">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <td> Employee Name </td>
-          <td> Employee Email </td>
-          <td> Employee Role </td>
-          <td> Action </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let emp of emp_details">
-          <td> {{emp.emp_name}} </td>
-          <td> {{emp.emp_email}} </td>
-          <td> {{emp.emp_role}} </td>
-          <td> 
-            <button class="btn btn-info me-2" (click)="employeeSetEdit(emp.id)"> Edit </button>
-            <button class="btn btn-danger" (click)="deleteEmp(emp.id)"> Delete </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
+  <table class="mt-5 table table-bordered">
+    <thead>
+      <tr> 
+        <th> Employee ID </th>
+        <th> Employee Name </th>
+        <th> Employee Email </th>
+        <th> Employee Role </th>
+        <th> Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of emp_details">
+        <td> {{emp.id}} </td>
+        <td> {{emp.emp_name}} </td>
+        <td> {{emp.emp_email}} </td>
+        <td> {{emp.emp_role}} </td>
+        <td> 
+          <button type="button" class="btn btn-info me-2" (click)="empEditUpdate(emp.id)"> Edit </button> 
+          <button type="button" class="btn btn-danger" (click)="deleteEmp(emp.id)"> Delete </button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

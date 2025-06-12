@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+ <form [formGroup]="emp_form" (ngSubmit)="empSaveData()" class="mb-4 p-3 shadow-sm rounded bg-light">
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let field of dynamic_fields">
+      <!-- <label>{{ field.label }}</label> -->
+      <input
+        class="form-control"
+        [placeholder]="field.label"
+        [formControlName]="field.key"
+      />
+      <div class="text-danger" *ngIf="emp_form.get(field.key)?.touched && emp_form.get(field.key)?.invalid">
+        {{ field.label }} is required
+      </div>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100"> {{ empUpdateRecored ? 'Update' : 'Add' }} Employee </button>
+    </div>
+  </div>
+</form>
+
+  <!-- Table -->
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#ID</th>
+      <th *ngFor="let field of dynamic_fields">{{ field.label }}</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of emp_details">
+      <td>{{ emp.id }}</td>
+      <td *ngFor="let field of dynamic_fields">{{ emp[field.key] }}</td>
+      <td>
+        <button class="btn btn-sm btn-info me-2" (click)="empEditUpdate(emp.id)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteEmp(emp.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
