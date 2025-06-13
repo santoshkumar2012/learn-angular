@@ -15,35 +15,25 @@ export class StaticPractiseComponent {
 
   filterEmployee: any = []
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.employeeData()
   }
 
   employees = [
-    { name: 'Alice', designation: 'Developer', salary: 70000 },
-    { name: 'Bob', designation: 'Manager', salary: 90000 },
+    { name: 'Alice',   designation: 'Developer', salary: 70000 },
+    { name: 'Bob',     designation: 'Manager', salary: 90000 },
     { name: 'Charlie', designation: 'Intern', salary: 30000 },
-    { name: 'Diana', designation: 'Developer', salary: 80000 }
+    { name: 'Diana',   designation: 'Developer', salary: 80000 }
   ]
 
   employeeData() {
     // this.filterEmployee = this.employees.filter(employee => employee.designation == 'Developer')
-
     from(this.employees).pipe(
       filter(emp => emp.salary > 70000),
       toArray()
     ).subscribe(res => this.filterEmployee = res);
-
-  }
-
-  employeeDetails() {
-    //   from(this.employees).pipe(
-    //     filter(emp => emp.salary > 75000),
-    //     toArray()
-    //   ).subscribe(res => this.filterEmployee = res);
-    // }
 
   }
 }

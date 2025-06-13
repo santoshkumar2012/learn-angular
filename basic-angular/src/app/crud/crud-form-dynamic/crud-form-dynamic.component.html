@@ -2,11 +2,13 @@
 <div class="container mt-5"> 
 <form class="shadow-lg rounded mb-5 p-3" [formGroup]="product_form" (ngSubmit)="saveProduct()">
 <div class="row">
+
   <div class="col-lg-2" *ngFor="let field of productform_fields">
     <input [placeholder]="field.label" class="form-control" [formControlName]="field.name" />
     <span class="text-danger" *ngIf="product_form.get(field.name)?.touched && product_form.get(field.name)?.hasError('required')"> 
     {{ field.label }} is invalid </span>
   </div>
+  
   <div class="col-lg-2 d-flex align-items-end">
     <button type="submit" class="btn btn-success w-100">Add Product</button>
   </div>
