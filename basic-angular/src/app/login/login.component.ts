@@ -4,11 +4,11 @@ import { Component } from '@angular/core';
 import { HttpSharedService } from '../http-shared.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { response } from 'express';
 import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, LoaderComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

@@ -47,9 +47,12 @@ import { CrudFormDynamicComponent } from './crud/crud-form-dynamic/crud-form-dyn
 import { CrudFormDynamicLocalhostComponent } from './crud/crud-form-dynamic-localhost/crud-form-dynamic-localhost.component';
 import { ParentsComponent } from './transfer/parents/parents.component';
 import { ChildsComponent } from './transfer/childs/childs.component';
+import { ChangeDetectionComponent } from './change-detection/change-detection.component';
+import { ConsoleCrudComponent } from './crud/console-crud/console-crud.component';
 
 export const routes: Routes = [
-    {path: '', component: LoginComponent},
+    {path: '',
+    loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)},
     {path: 'crud', component: CrudComponent, canActivate:[authGuard]},
     {path: 'pipe', component: PipeComponent, canActivate:[authGuard]},
     {path: 'parent', component: ParentComponent, canActivate:[authGuard]},
@@ -95,5 +98,7 @@ export const routes: Routes = [
     {path: 'crud-form-dynamic', component:CrudFormDynamicComponent, canActivate:[authGuard]},
     {path: 'crud-form-dynamic-localhost', component:CrudFormDynamicLocalhostComponent, canActivate:[authGuard]},
     {path: 'parents', component:ParentsComponent},
-    {path: 'childs', component:ChildsComponent}
+    {path: 'childs', component:ChildsComponent},
+    {path: 'change-detection', component:ChangeDetectionComponent},
+    {path: 'console-crud', component:ConsoleCrudComponent}
 ];

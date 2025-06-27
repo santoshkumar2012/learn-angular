@@ -35,6 +35,7 @@ export class DashboardComponent {
     { name: 'subject', link: '/subject' },
     { name: 'users', link: '/users' },
     { name: 'user form', link: '/user-form' },
+    { name: 'change detection', link:'/change-detection'}
  ]
 
  isDisabled = true

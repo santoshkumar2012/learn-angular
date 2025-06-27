@@ -1,2 +1,15 @@
-<h1> Parent Component </h1>
-<app-childs [message]="parentMessage"></app-childs>
+<h1> Parent Components </h1>
+<!-- <app-childs [message]="parentMessage"></app-childs> -->
+<!-- <app-childs [users]="apiData"></app-childs> -->
+
+<app-childs (dataFetched)="onApiDataReceived($event)"></app-childs>
+<div *ngIf="receivedData.length > 0">
+  <h3>Data received from Child:</h3>
+  <ul>
+    <li *ngFor="let user of receivedData">{{ user.firstName }}</li>
+  </ul>
+</div>
+
+<div *ngIf="receivedData.length === 0">
+  <p>Loading or no data found...</p>
+</div>

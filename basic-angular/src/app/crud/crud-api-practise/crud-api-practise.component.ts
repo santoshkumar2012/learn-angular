@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-crud-api-practise',
-  imports: [HeaderComponent, ReactiveFormsModule, CommonModule],
+  imports: [HeaderComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './crud-api-practise.component.html',
   styleUrl: './crud-api-practise.component.css'
 })
@@ -103,4 +103,5 @@ export class CrudApiPractiseComponent {
       this.toaster.success("User is deleted")
     })
   }
+
 }
