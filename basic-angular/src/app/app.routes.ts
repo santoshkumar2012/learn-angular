@@ -49,6 +49,7 @@ import { ParentsComponent } from './transfer/parents/parents.component';
 import { ChildsComponent } from './transfer/childs/childs.component';
 import { ChangeDetectionComponent } from './change-detection/change-detection.component';
 import { ConsoleCrudComponent } from './crud/console-crud/console-crud.component';
+import { InterviewComponent } from './interview/interview.component';
 
 export const routes: Routes = [
     {path: '',
@@ -100,5 +101,6 @@ export const routes: Routes = [
     {path: 'parents', component:ParentsComponent},
     {path: 'childs', component:ChildsComponent},
     {path: 'change-detection', component:ChangeDetectionComponent},
-    {path: 'console-crud', component:ConsoleCrudComponent}
+    {path: 'console-crud', component:ConsoleCrudComponent},
+    {path: 'interview', component:InterviewComponent}
 ];
