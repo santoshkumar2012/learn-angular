@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-console-crud',
@@ -38,5 +38,5 @@ export class ConsoleCrudComponent {
     })
     console.log(this.emp_form.value)
   }
-  
+
 }

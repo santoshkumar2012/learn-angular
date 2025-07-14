@@ -69,9 +69,7 @@ export class CrudLocalstorageComponent {
   } else {
     this.toaster.error("Form is invalid. Please correct the errors.")
   }
-
   }
-
 
   updateEmp(){
     let found = this.emp_details.filter((emp_data: any) => emp_data.id == this.empUpdateRecored)
