@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { HttpSharedService } from '../../http-shared.service';
@@ -103,5 +104,4 @@ export class CrudApiPractiseComponent {
       this.toaster.success("User is deleted")
     })
   }
-
 }

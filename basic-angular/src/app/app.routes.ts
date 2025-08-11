@@ -50,6 +50,9 @@ import { ChildsComponent } from './transfer/childs/childs.component';
 import { ChangeDetectionComponent } from './change-detection/change-detection.component';
 import { ConsoleCrudComponent } from './crud/console-crud/console-crud.component';
 import { InterviewComponent } from './interview/interview.component';
+import { SignalComponent } from './signal/signal.component';
+import { TaskManagerComponent } from './task-manager/task-manager.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 
 export const routes: Routes = [
     {path: '',
@@ -102,5 +105,8 @@ export const routes: Routes = [
     {path: 'childs', component:ChildsComponent},
     {path: 'change-detection', component:ChangeDetectionComponent},
     {path: 'console-crud', component:ConsoleCrudComponent},
-    {path: 'interview', component:InterviewComponent}
+    {path: 'interview', component:InterviewComponent},
+    {path: 'signal', component:SignalComponent},
+    {path: 'task-manager', component:TaskManagerComponent},
+    {path: 'product-filter', component:ProductFilterComponent}
 ];

@@ -4,8 +4,10 @@
     <div class="row">
       <div class="col-lg-4"> 
         <input type="text" placeholder="Employee Name" class="form-control" formControlName="emp_name">  
+
         <span class="text-danger" *ngIf="emp_form.get('emp_name')?.touched && emp_form.get('emp_name')?.hasError('required')"> 
           Employee name is invalid </span>
+
           </div>
           <div class="col-lg-3"> <input type="text" placeholder="Employee Email" class="form-control" formControlName="emp_email"> 
           <span class="text-danger" *ngIf="emp_form.get('emp_email')?.touched && emp_form.get('emp_email')?.hasError('required')"> 
@@ -44,4 +46,26 @@
       </tr>
     </tbody>
   </table>
+
+
+  <ul *ngFor="let staff of staffs">
+
+  <ng-container *ngIf="staff.salary < 50000 else balancesalary">
+    <li> {{staff.staff_name}} </li>
+    <li> {{staff.age}} </li>
+  </ng-container>
+<hr>
+  <ng-template #balancesalary>
+    <li> {{staff.staff_name}} </li>
+    <li> {{staff.age}} </li>
+  </ng-template>
+    
+  </ul>
+
+<button (click)="toggleButton()" class="btn btn-success"> clic </button>
+
+  <div *ngIf="isVisiable">
+This message is visiable. 
+  </div>
+
 </div>

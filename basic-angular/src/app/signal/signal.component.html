@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+<div class="row">
+<div class="col-lg-3"> 
+{{firstName()}} , {{cityList()}}, {{studentObj().city}}<br>
+<button class="btn btn-success mt-4" (click)="changeName()"> change Name  </button>
+<button class="btn btn-success" (click)="addCity()"> Add City </button>
+<button class="btn btn-success" (click)="changeCity()"> Change City </button>
+</div>
+</div>
+</div>

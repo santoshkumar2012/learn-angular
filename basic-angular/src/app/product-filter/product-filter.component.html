@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="container mt-5">
+<h2>Product List with Filters (Signals)</h2>
+<div class="filters">
+  <strong>Filter by Category:</strong>
+  <button (click)="setFilter('all')">All</button>
+  <button (click)="setFilter('electronics')">Electronics</button>
+  <button (click)="setFilter('clothing')">Clothing</button>
+  <button (click)="setFilter('home')">Home</button>
+</div>
+<ul>
+  <li *ngFor="let product of filteredProducts()">
+    {{ product.name }} ({{ product.category }})
+  </li>
+</ul>
+
+<div class="mt-5">
+<div class="flex"> 
+<input type="text" class="form-control" #firstNameField [value]="firstName()" (input)="firstName.set(firstNameField.value)" placeholder="First Name">
+<input type="text" class="form-control" #lastNameField [value]="lastName()" (input)="lastName.set(lastNameField.value)" placeholder="Last Name">
+</div>
+<h3> Full Name : {{fullName()}} </h3>
+</div>
+
+
+</div>

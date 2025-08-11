@@ -100,4 +100,23 @@ export class CrudLocalstorageComponent {
     localStorage.setItem('employee_data', JSON.stringify(this.emp_details))
   }
 
+
+public staffs = [
+{ staff_name: "Rakesh", age:35, salary:50000, },
+{ staff_name: "Mohan", age:35, salary:100000, },
+{ staff_name: "Sohan", age:35, salary:30000, },
+{ staff_name: "Jhannu", age:35, salary:100000, },
+{ staff_name: "Pradeep", age:35, salary:50000, },
+{ staff_name: "Kailash", age:35, salary:100000, },
+{ staff_name: "Jhunjhunwala", age:35, salary:100000, }
+]
+
+
+isVisiable = true
+toggleButton(){
+  this.isVisiable = !this.isVisiable
+ }
+
+
+
 }

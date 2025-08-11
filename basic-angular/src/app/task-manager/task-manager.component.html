@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<div class="container">
+<div class="task-container">
+<h2>Signal-based Task Manager</h2>
+<div class="d-flex">
+<input class="form-control" type="text" [value]="newTaskTitle()" (input)="updateTaskTitle($event)" placeholder="Add a task"/>
+<button (click)="addTask()" class="btn btn-success">Add Task</button>
+</div>
+<ul>
+    <li *ngFor="let task of tasks()">
+      <input type="checkbox" [checked]="task.completed" (change)="toggleTask(task.id)" />
+      <span [class.completed]="task.completed">{{ task.title }}</span>
+      <button (click)="deleteTask(task.id)">❌</button>
+    </li>
+  </ul>
+  <div class="stats">
+    ✅ Completed: {{ completedTasks().length }} |
+    🔄 Pending: {{ pendingTasks().length }}
+  </div>
+</div>
+</div>
