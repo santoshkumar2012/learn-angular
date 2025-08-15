@@ -1,61 +1,39 @@
 <app-header></app-header>
 <div class="container mt-5">
-    <form class="shadow p-4" [formGroup]="user_form" (ngSubmit)="saveUser()">
-        <div class="row">
-            <div class="col-lg-3 mb-4">
-                <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
-                <span class="text-danger" *ngIf="user_form.get('firstName')?.touched && user_form.get('firstName')?.hasError('required')"> First Name is invalid </span>
-            </div>
-             <div class="col-lg-3 mb-4">
-                <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
-                <span class="text-danger" *ngIf="user_form.get('lastName')?.touched && user_form.get('lastName')?.hasError('required')"> Last Name is invalid </span>
-            </div>
-             <div class="col-lg-3 mb-4">
-                <input type="text" class="form-control" placeholder="Email" formControlName="email">
-                <span class="text-danger" *ngIf="user_form.get('email')?.touched && user_form.get('email')?.hasError('required')"> Email is invalid </span>
-            </div>
-             <div class="col-lg-3 mb-4">
-                <input type="text" class="form-control" placeholder="Gender" formControlName="gender">
-                <span class="text-danger" *ngIf="user_form.get('gender')?.touched && user_form.get('gender')?.hasError('required')"> Gender is invalid </span>
-            </div>
-             <div class="col-lg-3 mb-4">
-                <input type="text" class="form-control" placeholder="Address" formControlName="address">
-                <span class="text-danger" *ngIf="user_form.get('address')?.touched && user_form.get('address')?.hasError('required')"> Address is invalid </span>
-            </div>
-             <div class="col-lg-3 mb-4">
-                <input type="text" class="form-control" placeholder="Department" formControlName="department">
-                <span class="text-danger" *ngIf="user_form.get('department')?.touched && user_form.get('department')?.hasError('required')"> Department is invalid </span>
-            </div>
-            <div class="col-lg-3">
-                <button type="submit" class="btn btn-success"> Submit </button>
-            </div>
+<form [formGroup]="user_form" (ngSubmit)="saveUser()">
+    <div class="row">
+        <div class="col-lg-4"> 
+            <input type="text" class="form-control" placeholder="FirstName" formControlName="firstName">
         </div>
-    </form> 
-    <table class="table table-bordered mt-5">
-        <thead>
-            <tr>
-                <td> First Name </td>
-                <td> Last Name </td>
-                <td> Email </td>
-                <td> Gender </td>
-                <td> Address </td>
-                <td> Department </td>
-                <td> Action </td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users">
-                <td>  {{user.firstName}} </td>
-                <td>  {{user.lastName}} </td>
-                <td>  {{user.email}} </td>
-                <td>  {{user.gender}} </td>
-                <td>  {{user?.address.address}} </td>
-                <td>  {{user.company?.department}} </td>
-                <td> 
-                    <button class="btn btn-info" (click)="setUser(user)"> Edit </button>
-                    <button class="btn btn-danger" (click)="deActiveUser(user)"> Delete </button>
-                </td> 
-            </tr>
-        </tbody>
-    </table> 
+        <div class="col-lg-4"> 
+            <input type="text" class="form-control" placeholder="LastName" formControlName="lastName">
+        </div>
+        <div class="col-lg-4"> <button type="submit" class="btn btn-success">  Submit </button> </div>
+    </div>
+</form>
+
+<table class="mt-5" class="table mt-5">
+    <thead>
+        <tr>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (user of users; track user) {
+        <tr>
+            <td> {{user.firstName}} </td>
+            <td> {{user.lastName}} </td>
+            <td> 
+                <button class="btn btn-info" (click)="setUser(user)"> Edit </button>
+                <button class="btn btn-danger" (click)="deleteUser(user)"> Delete </button>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
 </div>

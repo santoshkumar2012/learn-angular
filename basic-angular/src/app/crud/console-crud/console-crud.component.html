@@ -1,32 +1,54 @@
 <app-header></app-header>
+
 <div class="container mt-5">
-  <form action="" [formGroup]="emp_form" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col-lg-3"> 
-	<input type="text" class="form-control" placeholder="Name" formControlName="name"> </div>
-      <div class="col-lg-3"> 
-	<input type="text" class="form-control" placeholder="Email" formControlName="email"> </div>
-      <div class="col-lg-3"> 
-	<input type="text" class="form-control" placeholder="Phone Number" formControlName="phone"> </div>
-      <div class="col-lg-3"> 
-	<button type="submit" class="btn btn-success"> Submit </button> </div>
-    </div>
+<form [formGroup]="empForm" (ngSubmit)="empSave()">
+<div class="row">
+  <div class="col-lg-3"> 
+    <input type="text" class="form-control" placeholder="Name" formControlName="name">
+    @if (empForm.get('name')?.touched && empForm.get('name')?.hasError('required')) { <span class="text-danger"> Name is invalid  </span> } 
+  </div>
+  <div class="col-lg-3"> 
+    <input type="text" class="form-control" placeholder="Email" formControlName="email"> 
+
+   @if (empForm.get('email')?.touched && empForm.get('email')?.hasError('required')) {
+    <span class="text-danger">Email is Invalid</span>
+  }
+
+  @if (empForm.get('email')?.touched && empForm.get('email')?.hasError('emailExists')) {
+    <span class="text-danger">Email already used</span>
+  }
+  </div>
+  <div class="col-lg-3"> 
+    <input type="text" class="form-control" placeholder="Phone" formControlName="phone"> 
+     @if (empForm.get('email')?.touched && empForm.get('email')?.hasError('required')) {
+      <span class="text-danger"> Phone is Invalid </span>
+    }
+  </div>
+  <div class="col-lg-3"> <button class="btn btn-success"> Submit </button> </div>
+</div>
   </form>
 
-  <table class="table table-bordered mt-5">
-  <thead>
-    <tr>
-      <th> Name </th>
-      <th> Email </th>
-      <th> Phone Number </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let emp of emp_details">
-      <td>{{emp.name}}</td>
-      <td>{{emp.email}}</td>
-      <td>{{emp.phone}}</td>
-    </tr>
-  </tbody>
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th> Name </th>
+        <th> Email </th>
+        <th> Phone </th>
+        <th> Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (emp of empDetails; track emp) {
+      <tr>
+        <td> {{emp.name}} </td>
+        <td> {{emp.email}} </td>
+        <td> {{emp.phone}} </td>
+        <td> 
+          <button class="btn btn-info me-2" (click)="empUpdate(emp.id)"> Edit </button>
+          <button class="btn btn-danger" (click)="deleteEmp(emp.id)"> Delete </button>
+        </td>
+      </tr>
+    }
+    </tbody>
   </table>
 </div>

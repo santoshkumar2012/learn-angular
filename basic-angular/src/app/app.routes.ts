@@ -53,6 +53,8 @@ import { InterviewComponent } from './interview/interview.component';
 import { SignalComponent } from './signal/signal.component';
 import { TaskManagerComponent } from './task-manager/task-manager.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { PdataComponent } from './data-transfer/pdata/pdata.component';
+import { CdataComponent } from './data-transfer/cdata/cdata.component';
 
 export const routes: Routes = [
     {path: '',
@@ -108,5 +110,7 @@ export const routes: Routes = [
     {path: 'interview', component:InterviewComponent},
     {path: 'signal', component:SignalComponent},
     {path: 'task-manager', component:TaskManagerComponent},
-    {path: 'product-filter', component:ProductFilterComponent}
+    {path: 'product-filter', component:ProductFilterComponent},
+    {path: 'cdata', component:CdataComponent},
+    {path: 'pdatas', component:PdataComponent}
 ];

@@ -18,37 +18,28 @@ export class CrudApiPractiseComponent {
   user_form!: FormGroup
   user_details: any
 
-  constructor(
-    private http: HttpSharedService,
-    private fb: FormBuilder,
-    private toaster: ToastrService
-  ){}
+  constructor( 
+    private fb: FormBuilder, 
+    private http: HttpSharedService, 
+    private toaster: ToastrService){}
 
-  user_field = {
-    firstName : ['', Validators.required],
-    lastName  : ['', Validators.required],
-    email     : ['', Validators.required],
-    gender    : ['', Validators.required],
-    address   : ['', Validators.required],
-    department: ['', Validators.required]
+  userFields = {
+    firstName : [''],
+    lastName : ['']
   }
 
   ngOnInit(){
-    this.intializedForm()
+    this.initialize()
     this.getUser()
   }
 
-  intializedForm(){
-    this.user_form = this.fb.group(this.user_field)
-  }
-
-  resetForm(){
-    this.intializedForm()
+  initialize(){
+    this.user_form = this.fb.group(this.user_details)
   }
 
   saveUser(){
-    this.createUser()
-    this.updateUser()
+    this.creatUser()
+    this.updatedUser()
   }
 
   getUser(){
@@ -57,40 +48,29 @@ export class CrudApiPractiseComponent {
     })
   }
 
-  setPayLoad(form: any){
-    return{
+  setPayload(form: any){
+    return {
       firstName : form.firstName,
-      lastName  : form.lastName,
-      email     : form.email,
-      gender    : form.gender,
-      address   : form.address,
-      department: form.department
+      lastName : form.lastName
     }
   }
 
-  createUser(){
-    this.http.post('users/add', this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
-      this.getUser()
-      this.resetForm()
-      this.toaster.success("User is created")
+  creatUser(){
+    this.http.post('users/add', this.setPayload(this.user_form.value)).subscribe((response: any) => {
+      this.toaster.success("User created is successfully")
     })
   }
 
   patchForm(){
     this.user_form.patchValue({
       firstName : this.user_details.firstName,
-      lastName  : this.user_details.lastName,
-      email     : this.user_details.email,
-      gender    : this.user_details.gender,
-      address   : this.user_details.address?.address,
-      department: this.user_details.company?.department
+      lastName : this.user_details.firstName
     })
   }
 
-  updateUser(){
-    this.http.put('users/'+this.user_details.id, this.setPayLoad(this.user_form.value)).subscribe((response: any) => {
-      this.resetForm()
-      this.toaster.success("User is updated")
+  updatedUser(){
+    this.http.put('users/'+this.user_details.id, this.setPayload(this.user_form.value)).subscribe((response: any) => {
+      this.toaster.success("User created is successfully")
     })
   }
 
@@ -99,9 +79,10 @@ export class CrudApiPractiseComponent {
     this.patchForm()
   }
 
-  deActiveUser(user: any){
-    this.http.delete('users/'+user.id).subscribe((response: any) => {
-      this.toaster.success("User is deleted")
+  deleteUser(user: any){
+    this.http.delete('user/'+user.id).subscribe((response: any) => {
+      this.toaster.success("User deleted is successfully")
     })
   }
+
 }
